@@ -1,0 +1,272 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE9256401495C36700EB6BFB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BE92563F1495C36700EB6BFB /* Default.png */; };
+		BE9256431495C36B00EB6BFB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9256421495C36B00EB6BFB /* Default@2x.png */; };
+		BEA11A731495C2410098110F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A721495C2410098110F /* UIKit.framework */; };
+		BEA11A751495C2410098110F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A741495C2410098110F /* Foundation.framework */; };
+		BEA11A771495C2410098110F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A761495C2410098110F /* CoreGraphics.framework */; };
+		BEA11A7D1495C2410098110F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEA11A7B1495C2410098110F /* InfoPlist.strings */; };
+		BEA11A7F1495C2410098110F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA11A7E1495C2410098110F /* main.m */; };
+		BEA11A831495C2410098110F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA11A821495C2410098110F /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BE92563F1495C36700EB6BFB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BE9256421495C36B00EB6BFB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BEA11A6E1495C2410098110F /* vBulletin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vBulletin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEA11A721495C2410098110F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BEA11A741495C2410098110F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BEA11A761495C2410098110F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BEA11A7A1495C2410098110F /* vBulletin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vBulletin-Info.plist"; sourceTree = "<group>"; };
+		BEA11A7C1495C2410098110F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEA11A7E1495C2410098110F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BEA11A801495C2410098110F /* vBulletin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vBulletin-Prefix.pch"; sourceTree = "<group>"; };
+		BEA11A811495C2410098110F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BEA11A821495C2410098110F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BEA11A6B1495C2410098110F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEA11A731495C2410098110F /* UIKit.framework in Frameworks */,
+				BEA11A751495C2410098110F /* Foundation.framework in Frameworks */,
+				BEA11A771495C2410098110F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BEA11A631495C2410098110F = {
+			isa = PBXGroup;
+			children = (
+				BE9256421495C36B00EB6BFB /* Default@2x.png */,
+				BE92563F1495C36700EB6BFB /* Default.png */,
+				BEA11A781495C2410098110F /* vBulletin */,
+				BEA11A711495C2410098110F /* Frameworks */,
+				BEA11A6F1495C2410098110F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BEA11A6F1495C2410098110F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEA11A6E1495C2410098110F /* vBulletin.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BEA11A711495C2410098110F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEA11A721495C2410098110F /* UIKit.framework */,
+				BEA11A741495C2410098110F /* Foundation.framework */,
+				BEA11A761495C2410098110F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BEA11A781495C2410098110F /* vBulletin */ = {
+			isa = PBXGroup;
+			children = (
+				BEA11A811495C2410098110F /* AppDelegate.h */,
+				BEA11A821495C2410098110F /* AppDelegate.m */,
+				BEA11A791495C2410098110F /* Supporting Files */,
+			);
+			path = vBulletin;
+			sourceTree = "<group>";
+		};
+		BEA11A791495C2410098110F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BEA11A7A1495C2410098110F /* vBulletin-Info.plist */,
+				BEA11A7B1495C2410098110F /* InfoPlist.strings */,
+				BEA11A7E1495C2410098110F /* main.m */,
+				BEA11A801495C2410098110F /* vBulletin-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BEA11A6D1495C2410098110F /* vBulletin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEA11A861495C2410098110F /* Build configuration list for PBXNativeTarget "vBulletin" */;
+			buildPhases = (
+				BEA11A6A1495C2410098110F /* Sources */,
+				BEA11A6B1495C2410098110F /* Frameworks */,
+				BEA11A6C1495C2410098110F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vBulletin;
+			productName = vBulletin;
+			productReference = BEA11A6E1495C2410098110F /* vBulletin.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BEA11A651495C2410098110F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = BEA11A681495C2410098110F /* Build configuration list for PBXProject "vBulletin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BEA11A631495C2410098110F;
+			productRefGroup = BEA11A6F1495C2410098110F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEA11A6D1495C2410098110F /* vBulletin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BEA11A6C1495C2410098110F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEA11A7D1495C2410098110F /* InfoPlist.strings in Resources */,
+				BE9256401495C36700EB6BFB /* Default.png in Resources */,
+				BE9256431495C36B00EB6BFB /* Default@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEA11A6A1495C2410098110F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEA11A7F1495C2410098110F /* main.m in Sources */,
+				BEA11A831495C2410098110F /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BEA11A7B1495C2410098110F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEA11A7C1495C2410098110F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BEA11A841495C2410098110F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BEA11A851495C2410098110F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BEA11A871495C2410098110F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "vBulletin/vBulletin-Prefix.pch";
+				INFOPLIST_FILE = "vBulletin/vBulletin-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BEA11A881495C2410098110F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "vBulletin/vBulletin-Prefix.pch";
+				INFOPLIST_FILE = "vBulletin/vBulletin-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BEA11A681495C2410098110F /* Build configuration list for PBXProject "vBulletin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEA11A841495C2410098110F /* Debug */,
+				BEA11A851495C2410098110F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEA11A861495C2410098110F /* Build configuration list for PBXNativeTarget "vBulletin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEA11A871495C2410098110F /* Debug */,
+				BEA11A881495C2410098110F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BEA11A651495C2410098110F /* Project object */;
+}
