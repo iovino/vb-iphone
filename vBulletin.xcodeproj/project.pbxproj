@@ -18,12 +18,13 @@
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
 		BE9256401495C36700EB6BFB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BE92563F1495C36700EB6BFB /* Default.png */; };
 		BE9256431495C36B00EB6BFB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9256421495C36B00EB6BFB /* Default@2x.png */; };
+		BE92575B1496E1BF00EB6BFB /* vBulletin-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE9257571496E1BF00EB6BFB /* vBulletin-Info.plist */; };
+		BE92575C1496E1BF00EB6BFB /* vBulletinAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE92575A1496E1BF00EB6BFB /* vBulletinAppDelegate.m */; };
 		BEA11A731495C2410098110F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A721495C2410098110F /* UIKit.framework */; };
 		BEA11A751495C2410098110F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A741495C2410098110F /* Foundation.framework */; };
 		BEA11A771495C2410098110F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A761495C2410098110F /* CoreGraphics.framework */; };
 		BEA11A7D1495C2410098110F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEA11A7B1495C2410098110F /* InfoPlist.strings */; };
 		BEA11A7F1495C2410098110F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA11A7E1495C2410098110F /* main.m */; };
-		BEA11A831495C2410098110F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA11A821495C2410098110F /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,16 +189,16 @@
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = vBulletin/three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		BE92563F1495C36700EB6BFB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BE9256421495C36B00EB6BFB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BE9257571496E1BF00EB6BFB /* vBulletin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "vBulletin-Info.plist"; path = "classes/init/configs/vBulletin-Info.plist"; sourceTree = "<group>"; };
+		BE9257581496E1BF00EB6BFB /* vBulletin-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "vBulletin-Prefix.pch"; path = "classes/init/configs/vBulletin-Prefix.pch"; sourceTree = "<group>"; };
+		BE9257591496E1BF00EB6BFB /* vBulletinAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vBulletinAppDelegate.h; path = classes/init/configs/vBulletinAppDelegate.h; sourceTree = "<group>"; };
+		BE92575A1496E1BF00EB6BFB /* vBulletinAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = vBulletinAppDelegate.m; path = classes/init/configs/vBulletinAppDelegate.m; sourceTree = "<group>"; };
 		BEA11A6E1495C2410098110F /* vBulletin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vBulletin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA11A721495C2410098110F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BEA11A741495C2410098110F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BEA11A761495C2410098110F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BEA11A7A1495C2410098110F /* vBulletin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vBulletin-Info.plist"; sourceTree = "<group>"; };
 		BEA11A7C1495C2410098110F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEA11A7E1495C2410098110F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BEA11A801495C2410098110F /* vBulletin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vBulletin-Prefix.pch"; sourceTree = "<group>"; };
-		BEA11A811495C2410098110F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BEA11A821495C2410098110F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,12 +286,113 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BE9257481496D46100EB6BFB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BE92574E1496D48100EB6BFB /* Init */,
+				BE92574D1496D48000EB6BFB /* Account */,
+				BE92574C1496D47E00EB6BFB /* Launcher */,
+				BE92574B1496D47900EB6BFB /* Private */,
+				BE92574A1496D47600EB6BFB /* Subscriptions */,
+				BE9257491496D46F00EB6BFB /* Notifications */,
+			);
+			name = Classes;
+			path = vBulletin;
+			sourceTree = "<group>";
+		};
+		BE9257491496D46F00EB6BFB /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		BE92574A1496D47600EB6BFB /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Subscriptions;
+			sourceTree = "<group>";
+		};
+		BE92574B1496D47900EB6BFB /* Private */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
+		BE92574C1496D47E00EB6BFB /* Launcher */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Launcher;
+			sourceTree = "<group>";
+		};
+		BE92574D1496D48000EB6BFB /* Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		BE92574E1496D48100EB6BFB /* Init */ = {
+			isa = PBXGroup;
+			children = (
+				BE9257531496D4CD00EB6BFB /* Configs */,
+				BE9257521496D4CB00EB6BFB /* Styles */,
+				BE9257511496D4C900EB6BFB /* Request */,
+				BE9257501496D4C800EB6BFB /* Controllers */,
+				BE92574F1496D4C600EB6BFB /* Helpers */,
+			);
+			name = Init;
+			sourceTree = "<group>";
+		};
+		BE92574F1496D4C600EB6BFB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		BE9257501496D4C800EB6BFB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		BE9257511496D4C900EB6BFB /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		BE9257521496D4CB00EB6BFB /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Styles;
+			sourceTree = "<group>";
+		};
+		BE9257531496D4CD00EB6BFB /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				BE9257571496E1BF00EB6BFB /* vBulletin-Info.plist */,
+				BE9257581496E1BF00EB6BFB /* vBulletin-Prefix.pch */,
+				BE9257591496E1BF00EB6BFB /* vBulletinAppDelegate.h */,
+				BE92575A1496E1BF00EB6BFB /* vBulletinAppDelegate.m */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
 		BEA11A631495C2410098110F = {
 			isa = PBXGroup;
 			children = (
 				BE9256421495C36B00EB6BFB /* Default@2x.png */,
 				BE92563F1495C36700EB6BFB /* Default.png */,
-				BEA11A781495C2410098110F /* vBulletin */,
+				BE9257481496D46100EB6BFB /* Classes */,
+				BEA11A791495C2410098110F /* Supporting Files */,
 				BEA11A711495C2410098110F /* Frameworks */,
 				BEA11A6F1495C2410098110F /* Products */,
 			);
@@ -322,26 +424,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BEA11A781495C2410098110F /* vBulletin */ = {
-			isa = PBXGroup;
-			children = (
-				BEA11A811495C2410098110F /* AppDelegate.h */,
-				BEA11A821495C2410098110F /* AppDelegate.m */,
-				BEA11A791495C2410098110F /* Supporting Files */,
-			);
-			path = vBulletin;
-			sourceTree = "<group>";
-		};
 		BEA11A791495C2410098110F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
-				BEA11A7A1495C2410098110F /* vBulletin-Info.plist */,
 				BEA11A7B1495C2410098110F /* InfoPlist.strings */,
 				BEA11A7E1495C2410098110F /* main.m */,
-				BEA11A801495C2410098110F /* vBulletin-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = vBulletin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -536,6 +627,7 @@
 				BEA11A7D1495C2410098110F /* InfoPlist.strings in Resources */,
 				BE9256401495C36700EB6BFB /* Default.png in Resources */,
 				BE9256431495C36B00EB6BFB /* Default@2x.png in Resources */,
+				BE92575B1496E1BF00EB6BFB /* vBulletin-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEA11A7F1495C2410098110F /* main.m in Sources */,
-				BEA11A831495C2410098110F /* AppDelegate.m in Sources */,
+				BE92575C1496E1BF00EB6BFB /* vBulletinAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,8 +756,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "vBulletin/vBulletin-Prefix.pch";
-				INFOPLIST_FILE = "vBulletin/vBulletin-Info.plist";
+				GCC_PREFIX_HEADER = "vBulletin/classes/init/configs/vBulletin-Prefix.pch";
+				INFOPLIST_FILE = "vBulletin/classes/init/configs/vBulletin-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -675,8 +767,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "vBulletin/vBulletin-Prefix.pch";
-				INFOPLIST_FILE = "vBulletin/vBulletin-Info.plist";
+				GCC_PREFIX_HEADER = "vBulletin/classes/init/configs/vBulletin-Prefix.pch";
+				INFOPLIST_FILE = "vBulletin/classes/init/configs/vBulletin-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

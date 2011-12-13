@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "vBulletinAppDelegate.h"
 
-@implementation AppDelegate
+@implementation vBulletinAppDelegate
 
 @synthesize window = _window;
 
