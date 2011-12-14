@@ -193,6 +193,7 @@
 		BE9257581496E1BF00EB6BFB /* vBulletin-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "vBulletin-Prefix.pch"; path = "classes/init/configs/vBulletin-Prefix.pch"; sourceTree = "<group>"; };
 		BE9257591496E1BF00EB6BFB /* vBulletinAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vBulletinAppDelegate.h; path = classes/init/configs/vBulletinAppDelegate.h; sourceTree = "<group>"; };
 		BE92575A1496E1BF00EB6BFB /* vBulletinAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = vBulletinAppDelegate.m; path = classes/init/configs/vBulletinAppDelegate.m; sourceTree = "<group>"; };
+		BE92575D1496FA8200EB6BFB /* vBulletinConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vBulletinConstants.h; path = classes/init/configs/vBulletinConstants.h; sourceTree = "<group>"; };
 		BEA11A6E1495C2410098110F /* vBulletin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vBulletin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA11A721495C2410098110F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BEA11A741495C2410098110F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -378,10 +379,11 @@
 		BE9257531496D4CD00EB6BFB /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				BE9257571496E1BF00EB6BFB /* vBulletin-Info.plist */,
-				BE9257581496E1BF00EB6BFB /* vBulletin-Prefix.pch */,
+				BE92575D1496FA8200EB6BFB /* vBulletinConstants.h */,
 				BE9257591496E1BF00EB6BFB /* vBulletinAppDelegate.h */,
 				BE92575A1496E1BF00EB6BFB /* vBulletinAppDelegate.m */,
+				BE9257571496E1BF00EB6BFB /* vBulletin-Info.plist */,
+				BE9257581496E1BF00EB6BFB /* vBulletin-Prefix.pch */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
