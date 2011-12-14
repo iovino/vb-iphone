@@ -17,6 +17,9 @@
 // Application Style Settings
 #import "vBulletinStyleSheet.h"
 
+// Login Controller
+#import "AccountLoginController.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,6 +57,30 @@
     
     // open unknown URLs in the app's web browser
     [map from:@"*" toViewController:[TTWebController class]];
+    
+    //
+    // begin url mapping
+    //
+
+    [map                from: @"vb://account/login"
+       toModalViewController: [AccountLoginController class]
+                    selector: nil ];
+
+    //
+    // end url mapping
+    //
+
+    // check if the user is logged in or not. If so, load the last screen
+    // from their previous session. Otherwise, load the login screen.
+    if ([self isUserLoggedIn]) {
+        if (![navigator restoreViewControllers]) {
+            [navigator openURLAction:[TTURLAction actionWithURLPath:@"vb://launcher"]];
+        }        
+    } 
+    
+    else {
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"vb://account/login"]];    
+    }
     
     return YES;
 }
