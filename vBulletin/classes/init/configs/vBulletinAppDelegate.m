@@ -14,6 +14,9 @@
 // Application Delegate
 #import "vBulletinAppDelegate.h"
 
+// Application Style Settings
+#import "vBulletinStyleSheet.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +36,7 @@
     [self.window makeKeyAndVisible];
 
     // load default stylesheet
-    //[TTStyleSheet setGlobalStyleSheet:[[[vBulletinStyleSheet alloc] init] autorelease]]; 
+    [TTStyleSheet setGlobalStyleSheet:[[vBulletinStyleSheet alloc] init]]; 
     
     // setup navigation with persistence enabled
     TTNavigator * navigator         = [TTNavigator navigator];

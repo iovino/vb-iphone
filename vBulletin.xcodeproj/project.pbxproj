@@ -20,6 +20,9 @@
 		BE9256431495C36B00EB6BFB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9256421495C36B00EB6BFB /* Default@2x.png */; };
 		BE92575B1496E1BF00EB6BFB /* vBulletin-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE9257571496E1BF00EB6BFB /* vBulletin-Info.plist */; };
 		BE92575C1496E1BF00EB6BFB /* vBulletinAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE92575A1496E1BF00EB6BFB /* vBulletinAppDelegate.m */; };
+		BE9257D31498569E00EB6BFB /* AccountLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9257D21498569E00EB6BFB /* AccountLoginController.m */; };
+		BE9257D9149857BD00EB6BFB /* UINavigationBar+CustomBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9257D6149857BD00EB6BFB /* UINavigationBar+CustomBackground.m */; };
+		BE9257DA149857BD00EB6BFB /* vBulletinStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9257D8149857BD00EB6BFB /* vBulletinStyleSheet.m */; };
 		BEA11A731495C2410098110F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A721495C2410098110F /* UIKit.framework */; };
 		BEA11A751495C2410098110F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A741495C2410098110F /* Foundation.framework */; };
 		BEA11A771495C2410098110F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A761495C2410098110F /* CoreGraphics.framework */; };
@@ -194,6 +197,12 @@
 		BE9257591496E1BF00EB6BFB /* vBulletinAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vBulletinAppDelegate.h; path = classes/init/configs/vBulletinAppDelegate.h; sourceTree = "<group>"; };
 		BE92575A1496E1BF00EB6BFB /* vBulletinAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = vBulletinAppDelegate.m; path = classes/init/configs/vBulletinAppDelegate.m; sourceTree = "<group>"; };
 		BE92575D1496FA8200EB6BFB /* vBulletinConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vBulletinConstants.h; path = classes/init/configs/vBulletinConstants.h; sourceTree = "<group>"; };
+		BE9257D11498569E00EB6BFB /* AccountLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountLoginController.h; path = classes/account/authentication/AccountLoginController.h; sourceTree = "<group>"; };
+		BE9257D21498569E00EB6BFB /* AccountLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountLoginController.m; path = classes/account/authentication/AccountLoginController.m; sourceTree = "<group>"; };
+		BE9257D5149857BD00EB6BFB /* UINavigationBar+CustomBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationBar+CustomBackground.h"; path = "classes/init/styles/UINavigationBar+CustomBackground.h"; sourceTree = "<group>"; };
+		BE9257D6149857BD00EB6BFB /* UINavigationBar+CustomBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+CustomBackground.m"; path = "classes/init/styles/UINavigationBar+CustomBackground.m"; sourceTree = "<group>"; };
+		BE9257D7149857BD00EB6BFB /* vBulletinStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vBulletinStyleSheet.h; path = classes/init/styles/vBulletinStyleSheet.h; sourceTree = "<group>"; };
+		BE9257D8149857BD00EB6BFB /* vBulletinStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = vBulletinStyleSheet.m; path = classes/init/styles/vBulletinStyleSheet.m; sourceTree = "<group>"; };
 		BEA11A6E1495C2410098110F /* vBulletin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vBulletin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA11A721495C2410098110F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BEA11A741495C2410098110F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -332,6 +341,7 @@
 		BE92574D1496D48000EB6BFB /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				BE9257D01498566400EB6BFB /* Authentication */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -372,6 +382,10 @@
 		BE9257521496D4CB00EB6BFB /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				BE9257D5149857BD00EB6BFB /* UINavigationBar+CustomBackground.h */,
+				BE9257D6149857BD00EB6BFB /* UINavigationBar+CustomBackground.m */,
+				BE9257D7149857BD00EB6BFB /* vBulletinStyleSheet.h */,
+				BE9257D8149857BD00EB6BFB /* vBulletinStyleSheet.m */,
 			);
 			name = Styles;
 			sourceTree = "<group>";
@@ -386,6 +400,15 @@
 				BE9257581496E1BF00EB6BFB /* vBulletin-Prefix.pch */,
 			);
 			name = Configs;
+			sourceTree = "<group>";
+		};
+		BE9257D01498566400EB6BFB /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				BE9257D11498569E00EB6BFB /* AccountLoginController.h */,
+				BE9257D21498569E00EB6BFB /* AccountLoginController.m */,
+			);
+			name = Authentication;
 			sourceTree = "<group>";
 		};
 		BEA11A631495C2410098110F = {
@@ -642,6 +665,9 @@
 			files = (
 				BEA11A7F1495C2410098110F /* main.m in Sources */,
 				BE92575C1496E1BF00EB6BFB /* vBulletinAppDelegate.m in Sources */,
+				BE9257D31498569E00EB6BFB /* AccountLoginController.m in Sources */,
+				BE9257D9149857BD00EB6BFB /* UINavigationBar+CustomBackground.m in Sources */,
+				BE9257DA149857BD00EB6BFB /* vBulletinStyleSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
