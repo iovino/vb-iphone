@@ -39,9 +39,40 @@
      * The image view for the applications logo.
      */
     UIImageView * _logoView;
+    
+    /**
+     * This table is used to contain the login and signup fields.
+     */
+    TTTableView * _loginTable;
+
+    /**
+     * The login tables datasource for adding and removing input fields.
+     */
+    TTListDataSource * _loginTableDataSource;
+
+    /**
+     * The textfield used for the entering in a username.
+     */
+    UITextField * _userField;
+
+    /**
+     * The textfield used for the entering in a password.
+     */
+    UITextField * _passField;
+
+    /**
+     * The textfield used for the entering in an email.
+     */
+    UITextField * _emailField;
 }
 
-@property (nonatomic, retain) UIImageView * logoView;
+@property (nonatomic, retain) UIImageView      * logoView;
+@property (nonatomic, retain) TTTableView      * loginTable;
+@property (nonatomic, retain) TTListDataSource * loginTableDataSource;
+
+@property (nonatomic, retain) UITextField      * userField;
+@property (nonatomic, retain) UITextField      * passField;
+@property (nonatomic, retain) UITextField      * emailField;
 
 
 @end

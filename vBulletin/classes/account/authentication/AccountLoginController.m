@@ -23,22 +23,18 @@
 // Three20's JSON Library
 #import <extThree20JSON/extThree20JSON.h>
 
-
-#define kVerticalSpacing 20.0
-#define kCellHeight 44.5
-
-static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
-static const CGFloat MIN_SCROLL_FRAC = 0.1;
-static const CGFloat MAX_SCROLL_FRAC = 0.8;
-static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
-static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation AccountLoginController
 
-@synthesize logoView = _logoView;
+@synthesize logoView             = _logoView;
+@synthesize loginTable           = _loginTable;
+@synthesize loginTableDataSource = _loginTableDataSource;
+
+@synthesize userField            = _userField;
+@synthesize passField            = _passField;
+@synthesize emailField           = _emailField;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,15 +78,65 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // logo view
+    self.logoView                   = [[UIImageView alloc] initWithImage:TTSTYLEVAR(logoImage)];
+    self.logoView.frame             = TTSTYLEVAR(logoFrame);
+    self.logoView.autoresizingMask  = TTSTYLEVAR(logoAutoMask);
     
-    CGRect  appFrame     = [UIScreen mainScreen].applicationFrame;
-    CGFloat appFrameHalf = appFrame.size.width / 2;
+    // login table
+    self.loginTable = [[TTTableView alloc] initWithFrame:TTSTYLEVAR(loginTableFrame) 
+                                                   style:TTSTYLEVAR(loginTableStyle)];
+    self.loginTable.backgroundColor  = TTSTYLEVAR(loginTableBackgroundColor);
+    self.loginTable.scrollEnabled    = TTSTYLEVAR(loginTableScrollEnabled);
+    self.loginTable.separatorColor   = TTSTYLEVAR(loginTableSeparatorColor);
+    self.loginTable.autoresizingMask = TTSTYLEVAR(loginTableAutoMask);
     
-    // logo
-    self.logoView = [[UIImageView alloc] initWithImage:vBStyleImage(@"/misc/login_logo.png")];
-    self.logoView.frame = CGRectMake(42, 20, 237, 83);
+    // login table - datasourse
+    self.loginTableDataSource = [[TTListDataSource alloc] init];    
+    self.loginTable.dataSource = self.loginTableDataSource;
+
+    // table fields
+    self.userField = [[UITextField alloc] init];
+    self.userField.placeholder      = @"Username";
+    self.userField.delegate         = self;
+    self.userField.keyboardType     = UIKeyboardTypeDefault;
+    self.userField.returnKeyType    = UIReturnKeyNext;
+    self.userField.clearButtonMode  = UITextFieldViewModeWhileEditing;
     
+    self.passField = [[UITextField alloc] init];
+    self.passField.placeholder      = @"Password";
+    self.passField.secureTextEntry  = YES;
+    self.passField.delegate         = self;
+    self.userField.keyboardType     = UIKeyboardTypeDefault;
+    self.passField.returnKeyType    = UIReturnKeyGo;
+    self.passField.clearButtonMode  = UITextFieldViewModeWhileEditing;
+    
+    self.emailField = [[UITextField alloc] init];
+    self.emailField.placeholder     = @"Email";
+    self.emailField.delegate        = self;
+    self.emailField.keyboardType    = UIKeyboardTypeEmailAddress;
+    self.emailField.returnKeyType   = UIReturnKeyGo;
+    self.emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+    // Since there is no way to actually change the placeholder text color, we have
+    // to use apple's private ivar, which may not make it through the appstore review. 
+    // If it gets rejected, try the following: http://stackoverflow.com/a/7002922/539529
+
+    [self.userField setValue:TTSTYLEVAR(fieldPlaceholderTextColor) 
+                  forKeyPath:@"_placeholderLabel.textColor"];
+    [self.passField setValue:TTSTYLEVAR(fieldPlaceholderTextColor) 
+                  forKeyPath:@"_placeholderLabel.textColor"];
+    [self.emailField setValue:TTSTYLEVAR(fieldPlaceholderTextColor) 
+                   forKeyPath:@"_placeholderLabel.textColor"];
+    
+    // add default text fields
+    [self.loginTableDataSource.items addObject:self.userField];
+    [self.loginTableDataSource.items addObject:self.passField];
+    
+    // add all sub-views
     [self.view addSubview:self.logoView];
+    [self.view addSubview:self.loginTable];
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +147,17 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    NSLog(@"didRotateFromInterfaceOrientation");
 }
 
 

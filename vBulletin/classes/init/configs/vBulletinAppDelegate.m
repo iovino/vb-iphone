@@ -33,8 +33,8 @@
 #pragma mark - Main Application
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
 
@@ -86,15 +86,13 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL 
-{
+- (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
     [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
     return YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)applicationWillResignActive:(UIApplication *)application 
-{
+- (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for 
      certain types of temporary interruptions (such as an incoming phone call or SMS message) or 
@@ -105,8 +103,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)applicationDidEnterBackground:(UIApplication *)application 
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application {
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store 
      enough application state information to restore your application to its current state in case 
@@ -116,8 +113,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)applicationWillEnterForeground:(UIApplication *)application 
-{
+- (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
      Called as part of the transition from the background to the inactive state; here you can undo 
      many of the changes made on entering the background.
@@ -125,8 +121,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)applicationDidBecomeActive:(UIApplication *)application 
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application {
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. 
      If the application was previously in the background, optionally refresh the user interface.
@@ -134,8 +129,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)applicationWillTerminate:(UIApplication *)application 
-{
+- (void)applicationWillTerminate:(UIApplication *)application {
     /*
      Called when the application is about to terminate.
      Save data if appropriate.
@@ -150,8 +144,7 @@
 #pragma mark - Private
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)logUserIn:(NSDictionary *)info 
-{
+- (void)logUserIn:(NSDictionary *)info {
     NSMutableDictionary * userinfo     = [[NSMutableDictionary alloc] init];
     NSUserDefaults      * userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -172,8 +165,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)logUserOut 
-{
+- (void)logUserOut {
     NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
     
     [standardUserDefaults setObject:nil forKey:@"vBUser"];
@@ -186,8 +178,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)isUserLoggedIn 
-{
+- (BOOL)isUserLoggedIn {
     NSDictionary * userinfo = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"vBUser"];
     
     if ([[userinfo valueForKey:@"userid"] length] == 0) {
@@ -204,8 +195,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSString *)returnFirstIntFromString:(NSString *)string 
-{
+- (NSString *)returnFirstIntFromString:(NSString *)string {
     NSError *error = NULL;	
     NSRegularExpression *regex = 
     [NSRegularExpression regularExpressionWithPattern:@"[\\w]+(\\d+)" 
@@ -225,8 +215,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)showAlertWithMessage:(NSString *)message andTitle:(NSString *)title 
-{
+- (void)showAlertWithMessage:(NSString *)message andTitle:(NSString *)title {
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title 
                                                      message:message 
                                                     delegate:self 

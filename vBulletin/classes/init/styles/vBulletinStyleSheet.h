@@ -27,9 +27,10 @@
  */
 @interface vBulletinStyleSheet : TTDefaultStyleSheet {}
 
-//
-// Common Style Overides
-//
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Common Styles
 
 /**
  * The default font that all non-styled text should be.
@@ -60,29 +61,84 @@
  */
 - (UIColor*)backgroundColor;
 
+/**
+ * The placeholder text for text fields.
+ * 
+ * @return UIColor
+ */
+- (UIColor*)fieldPlaceholderTextColor;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Login / Signup Screen
+
+/**
+ * The logo of the application.
+ * 
+ * @return UIImage
+ */
+- (UIImage*)logoImage;
+
+/**
+ * The frame of the logo.
+ * 
+ * @return CGRect
+ */
+- (CGRect)logoFrame;
+
+/**
+ * The auto resizing mask when the device changes it's orientation.
+ * 
+ * @return UIViewAutoresizing
+ */
+- (UIViewAutoresizing)logoAutoMask;
+
+#pragma mark -
+
+/**
+ * The frame of the login table
+ * 
+ * @return CGRect
+ */
+- (CGRect)loginTableFrame;
+
+/**
+ * The table style we should use.
+ * 
+ * @return CGRect
+ */
+- (UITableViewStyle)loginTableStyle;
+
+/**
+ * The background color of the login table.
+ * 
+ * @return CGRect
+ */
+- (UIColor *)loginTableBackgroundColor;
+
+/**
+ * Whether or not scrolling should be enabled for the login table.
+ * 
+ * @return CGRect
+ */
+- (BOOL)loginTableScrollEnabled;
+
+/**
+ * The separator color that separates the input fields.
+ * 
+ * @return CGRect
+ */
+- (UIColor*)loginTableSeparatorColor;
+
+/**
+ * The auto resizing mask for when the device changes it's orientation.
+ * 
+ * @return CGRect
+ */
+- (UIViewAutoresizing)loginTableAutoMask;
+
+
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
