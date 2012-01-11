@@ -20,7 +20,7 @@
  * Example:
  * http://www.vbulletin.com/
  */
-#define BASE_URL  @"http://192.168.0.197/hvac/"
+#define BASE_URL  @"http://192.168.0.198/iforums/"
 
 /**
  * Forums URL
@@ -43,7 +43,7 @@
  * Example:
  * http://www.vbulletin.com/forums/iphoneapp/request.php?file=
  */
-#define API_URL FORUM_URL "iphoneapp/request.php?file="
+#define API_URL FORUM_URL "vbiphoneweb/request.php?file="
 
 /**
  * Style Bundle
