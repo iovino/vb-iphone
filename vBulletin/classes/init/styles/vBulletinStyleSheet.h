@@ -198,6 +198,71 @@
  */
 - (CGSize)loginLinksShadowOffset;
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - 
+#pragma mark launcher Screen
+
+#pragma mark launcher Screen - Navigation Bar
+
+/**
+ * The background color or image used for the launcher's top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavBackground;
+
+/**
+ * The font used for all text in the launcher's top navigation bar.
+ * 
+ * @return UIFont
+ */
+- (UIFont *)launcherNavFont;
+
+/**
+ * The default text color that's used for all text in the launcher's top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavNormalTextColor;
+
+/**
+ * The highlighted text color used when a user touches any text links in the top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavActiveTextColor;
+
+/**
+ * The default shawdow color that's used for all text in the launcher's top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavNormalTextShadowColor;
+
+/**
+ * The highlighted shawdow color used when a user touches any text links in the top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavActiveTextShadowColor;
+
+/**
+ * The default background image for any text links in the top navigation bar. 
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherNavNormalBgImage;
+
+/**
+ * The highlighted background image for any text links in the top navigation bar. 
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherNavActiveBgImage;
+
+
 @end
 
 
