@@ -147,6 +147,20 @@
  */
 - (void)keyboardWillHide:(NSNotification*)notification;
 
+/**
+ * This method is executed when the signup button is pressed. We check if we're submitting the
+ * data, and if not, we transition to the signup form using some animation.
+ *
+ * @return void
+ */
 - (void)signupButtonPressed;
+
+/**
+ * Same as the signup method, but for login. When pressed, we check if we're submitting the data, 
+ * and if not, we transition to the login form using some animation.
+ *
+ * @return void
+ */
 - (void)loginButtonPressed;
+
 @end
