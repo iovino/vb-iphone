@@ -88,7 +88,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        // make the application delegate avaliable
+        // application's delegate
         appDelegate = (vBulletinAppDelegate *) [[UIApplication sharedApplication] delegate];
         
         // set some defaults for the view
