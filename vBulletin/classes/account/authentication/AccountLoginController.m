@@ -61,7 +61,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 @synthesize tosButton            = _tosButton;
 
 @synthesize animatedDistance     = _animatedDistance;
-@synthesize isLoggingIn          = _isLoggingIn;
+@synthesize isKeyboardPresent    = _isKeyboardPresent;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,9 +90,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         // set some defaults for the view
         self.view.backgroundColor = TTSTYLEVAR(backgroundColor);
-        self.isLoggingIn = YES;
         
         // notifications
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide:)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
 
         
     }
@@ -193,8 +200,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self.loginButton = [[UIButton alloc] initWithFrame:CGRectMake(165, sbYAxis , 134, 40)];
     [self.loginButton setImage:TTSTYLEVAR(loginButtonImage) forState:UIControlStateNormal];
     [self.loginButton setImage:TTSTYLEVAR(loginButtonImage) forState:UIControlStateDisabled];
-    [self.loginButton setEnabled:YES];
-    [self.loginButton setAlpha:1.0];
+    [self.loginButton setEnabled:NO];
+    [self.loginButton setAlpha:0.5];
     [self.loginButton addTarget:self 
                          action:@selector(loginButtonPressed) 
                forControlEvents:UIControlEventTouchUpInside];
@@ -314,6 +321,139 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     return NO;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)keyboardWillShow:(NSNotification*)notification {
+    if (self.signupButton.enabled) {
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             self.signupButton.alpha  = 0;
+                             self.loginButton.alpha   = 1;
+                             self.loginButton.enabled = YES;
+                         }];
+    }
+    
+    else {
+        CGRect loginFrame  = self.loginButton.frame;
+        CGRect signupFrame = self.signupButton.frame;
+        
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             self.signupButton.enabled = YES;
+                             self.signupButton.frame   = loginFrame;
+                             self.loginButton.frame    = signupFrame;
+                             self.signupButton.alpha   = 1;
+                             self.loginButton.alpha    = 0;
+                         }];
+    }
+    
+    self.isKeyboardPresent = YES;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)keyboardWillHide:(NSNotification*)notification {
+    if (self.signupButton.alpha == 0) {
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             self.signupButton.alpha  = 1;
+                             self.loginButton.alpha   = 0.5;
+                             self.loginButton.enabled = NO;
+                         }];
+    }
+    
+    else {
+        CGRect loginFrame  = self.loginButton.frame;
+        CGRect signupFrame = self.signupButton.frame;
+        
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             self.signupButton.enabled = NO;
+                             self.signupButton.frame   = loginFrame;
+                             self.loginButton.frame    = signupFrame;
+                             self.signupButton.alpha   = .5;
+                             self.loginButton.alpha    = 1.;
+                         }];
+    }
+
+    self.isKeyboardPresent = NO;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)signupButtonPressed {
+    
+    if (self.isKeyboardPresent) {
+        //[self submit:FormValuesForSignup];
+    }
+    
+    else {
+        self.signupButton.enabled = NO;
+        self.loginButton.enabled  = YES;
+        
+        NSIndexPath * path = [NSIndexPath indexPathForRow:[self.loginTableDataSource.items count] 
+                                                inSection:0];
+        
+        [self.loginTableDataSource.items addObject:self.emailField];
+        [self.loginTable beginUpdates];
+        [self.loginTable insertRowsAtIndexPaths:[NSArray arrayWithObject:path] 
+                               withRowAnimation:UITableViewRowAnimationFade];    
+        [self.loginTable endUpdates];
+        
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             CGFloat tableHeight = self.loginTable.size.height + 44.5 * 1;
+                             CGPoint signupOrgin = 
+                             CGPointMake(20, tableHeight + self.loginTable.origin.y);
+                             CGPoint loginOrgin  = 
+                             CGPointMake(165, tableHeight + self.loginTable.origin.y); 
+                             
+                             self.loginTable.height   = tableHeight;
+                             self.signupButton.origin = signupOrgin;
+                             self.loginButton.origin  = loginOrgin;
+                             self.signupButton.alpha  = 0.5;
+                             self.loginButton.alpha   = 1;
+                             self.lostpwButton.alpha  = 0;
+                         }];
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)loginButtonPressed {
+    
+    if (self.isKeyboardPresent) {
+        //[self submit:FormValuesForLogin];
+    }
+    
+    else {
+        self.signupButton.enabled = YES;
+        self.loginButton.enabled  = NO;
+        self.emailField.text      = @"";
+        
+        NSInteger lastTableIndex = [self.loginTableDataSource.items indexOfObject:self.emailField];        
+        NSIndexPath * path       = [NSIndexPath indexPathForRow:lastTableIndex inSection:0];
+        
+        [self.loginTableDataSource.items removeObject:self.emailField];
+        [self.loginTable beginUpdates];
+        [self.loginTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] 
+                               withRowAnimation:UITableViewRowAnimationFade];    
+        [self.loginTable endUpdates];
+        
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             CGFloat tableHeight = self.loginTable.size.height - 44.5 * 1;
+                             CGPoint signupOrgin = 
+                             CGPointMake(20, tableHeight + self.loginTable.origin.y);
+                             CGPoint loginOrgin  = 
+                             CGPointMake(165, tableHeight + self.loginTable.origin.y); 
+                             
+                             self.loginTable.height   = tableHeight;
+                             self.signupButton.origin = signupOrgin;
+                             self.loginButton.origin  = loginOrgin;
+                             self.signupButton.alpha  = 1;
+                             self.loginButton.alpha   = 0.5;
+                             self.lostpwButton.alpha  = 1;
+                         }];
+    }
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UITextFieldDelagate
@@ -377,7 +517,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
     UITextField * nextField = textField.nextField;
     
-    if (self.isLoggingIn) {
+    if ([self.emailField.text length] > 0) {
+
+    }
+    
+    else {
         if ([self.userField.text length] > 0 && [self.passField.text length] > 0) {
             NSLog(@"submit login details");
         } else {

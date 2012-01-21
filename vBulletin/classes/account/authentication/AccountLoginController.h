@@ -96,9 +96,10 @@
     CGFloat _animatedDistance;
     
     /**
-     * Tells you whether or not the user is logging in or signning up, default is YES.
+     * Tells us whether or not the keyboard is on the screen.
      */
-    BOOL _isLoggingIn;
+    BOOL _isKeyboardPresent;
+
 
 }
 
@@ -117,14 +118,35 @@
 @property (nonatomic, retain) UIButton         * tosButton;
 
 @property (nonatomic, readwrite) CGFloat         animatedDistance;
-@property (nonatomic, readwrite) BOOL            isLoggingIn;
-
+@property (nonatomic, readwrite) BOOL            isKeyboardPresent;
 
 /**
  * This method finds the active UIField and dismisses the keyboard from the screen.
  * 
- * @return UIColor
+ * @return BOOL
  */
 - (BOOL)findAndResignFirstResonder:(UIView *)view;
 
+/**
+ * This method is executed when the KeyboardWillShow notification is fired.
+ * 
+ * @param NSNotification
+ *  The UIKeyboardWillShowNotification obect.
+ *
+ * @return void
+ */
+- (void)keyboardWillShow:(NSNotification*)notification;
+
+/**
+ * This method is executed when the KeyboardWillHide notification is fired.
+ * 
+ * @param NSNotification
+ *  The UIKeyboardWillHideNotification obect.
+ *
+ * @return void
+ */
+- (void)keyboardWillHide:(NSNotification*)notification;
+
+- (void)signupButtonPressed;
+- (void)loginButtonPressed;
 @end
