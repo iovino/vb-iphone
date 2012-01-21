@@ -14,6 +14,14 @@
 // Application's Delegate
 #import "vBulletinAppDelegate.h"
 
+/** 
+ * Enumeration to clarify which form is being submitted.
+ */
+typedef enum  {
+    FormValuesForLogin, /* The user submission is from the login form */
+    FormValuesForSignup /* The user submission is from the signup form */
+} FormValuesFor;
+
 /**
  * @class       vBulletinStyleSheet
  * @abstract    The home screen where the user can login or signup.
@@ -96,10 +104,19 @@
     CGFloat _animatedDistance;
     
     /**
-     * Tells you whether or not the user is logging in or signning up, default is YES.
+     * Tells us whether or not the keyboard is on the screen.
      */
-    BOOL _isLoggingIn;
+    BOOL _isKeyboardPresent;
+    
+    /**
+     * The activity label used when the form submission is being sent to the remote server.
+     */
+    TTActivityLabel  * _activityLabelForFrame;
 
+    /**
+     * The activity label used while transitioning the user on a successful login or signup.
+     */
+    TTActivityLabel  * _activityLabelForTable;
 }
 
 @property (nonatomic, retain) UIImageView      * logoView;
@@ -117,22 +134,64 @@
 @property (nonatomic, retain) UIButton         * tosButton;
 
 @property (nonatomic, readwrite) CGFloat         animatedDistance;
-@property (nonatomic, readwrite) BOOL            isLoggingIn;
+@property (nonatomic, readwrite) BOOL            isKeyboardPresent;
+
+@property (nonatomic, retain) TTActivityLabel  * activityLabelForFrame;
+@property (nonatomic, retain) TTActivityLabel  * activityLabelForTable;
 
 
 /**
  * This method finds the active UIField and dismisses the keyboard from the screen.
  * 
- * @return UIColor
+ * @return BOOL
  */
 - (BOOL)findAndResignFirstResonder:(UIView *)view;
 
 /**
- * This method is run everytime a user types something into the text field. It's used to figure
- * out whether or not we should show the user the next or go buttons on the keyboard.
+ * This method is executed when the KeyboardWillShow notification is fired.
+ * 
+ * @param NSNotification
+ *  The UIKeyboardWillShowNotification obect.
  *
  * @return void
  */
-- (void)textFieldDidChange:(id)sender;
+- (void)keyboardWillShow:(NSNotification*)notification;
+
+/**
+ * This method is executed when the KeyboardWillHide notification is fired.
+ * 
+ * @param NSNotification
+ *  The UIKeyboardWillHideNotification obect.
+ *
+ * @return void
+ */
+- (void)keyboardWillHide:(NSNotification*)notification;
+
+/**
+ * This method is executed when the signup button is pressed. We check if we're submitting the
+ * data, and if not, we transition to the signup form using some animation.
+ *
+ * @return void
+ */
+- (void)signupButtonPressed;
+
+/**
+ * Same as the signup method, but for login. When pressed, we check if we're submitting the data, 
+ * and if not, we transition to the login form using some animation.
+ *
+ * @return void
+ */
+- (void)loginButtonPressed;
+
+/**
+ * This method is executed when we're ready to send the sign or login data to the remote server.
+ * 
+ * @param enum
+ *  The 'FormValuesFor' enumeration to determine which form the submission came from. 
+ *
+ * @return void
+ */
+- (void)submit:(FormValuesFor)form;
+
 
 @end

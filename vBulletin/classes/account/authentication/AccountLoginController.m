@@ -46,22 +46,25 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation AccountLoginController
 
-@synthesize logoView             = _logoView;
-@synthesize loginTable           = _loginTable;
-@synthesize loginTableDataSource = _loginTableDataSource;
+@synthesize logoView              = _logoView;
+@synthesize loginTable            = _loginTable;
+@synthesize loginTableDataSource  = _loginTableDataSource;
 
-@synthesize userField            = _userField;
-@synthesize passField            = _passField;
-@synthesize emailField           = _emailField;
+@synthesize userField             = _userField;
+@synthesize passField             = _passField;
+@synthesize emailField            = _emailField;
 
-@synthesize loginButton          = _loginButton;
-@synthesize signupButton         = _signupButton;
-@synthesize lostpwButton         = _lostpwButton;
-@synthesize privacyButton        = _privacyButton;
-@synthesize tosButton            = _tosButton;
+@synthesize loginButton           = _loginButton;
+@synthesize signupButton          = _signupButton;
+@synthesize lostpwButton          = _lostpwButton;
+@synthesize privacyButton         = _privacyButton;
+@synthesize tosButton             = _tosButton;
 
-@synthesize animatedDistance     = _animatedDistance;
-@synthesize isLoggingIn          = _isLoggingIn;
+@synthesize animatedDistance      = _animatedDistance;
+@synthesize isKeyboardPresent     = _isKeyboardPresent;
+
+@synthesize activityLabelForFrame = _activityLabelForFrame;
+@synthesize activityLabelForTable = _activityLabelForTable;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,9 +93,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         // set some defaults for the view
         self.view.backgroundColor = TTSTYLEVAR(backgroundColor);
-        self.isLoggingIn = YES;
         
         // notifications
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide:)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
 
         
     }
@@ -193,8 +203,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self.loginButton = [[UIButton alloc] initWithFrame:CGRectMake(165, sbYAxis , 134, 40)];
     [self.loginButton setImage:TTSTYLEVAR(loginButtonImage) forState:UIControlStateNormal];
     [self.loginButton setImage:TTSTYLEVAR(loginButtonImage) forState:UIControlStateDisabled];
-    [self.loginButton setEnabled:YES];
-    [self.loginButton setAlpha:1.0];
+    [self.loginButton setEnabled:NO];
+    [self.loginButton setAlpha:0.5];
     [self.loginButton addTarget:self 
                          action:@selector(loginButtonPressed) 
                forControlEvents:UIControlEventTouchUpInside];
@@ -265,6 +275,23 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                        action:@selector(lostpwButtonPressed) 
              forControlEvents:UIControlEventTouchUpInside];
     
+    
+    // activity labels
+    self.activityLabelForFrame = 
+        [[TTActivityLabel alloc] initWithFrame:self.view.frame 
+                                         style:TTActivityLabelStyleBlackBox
+                                          text:@"Sending..."];
+    self.activityLabelForTable = 
+        [[TTActivityLabel alloc] initWithFrame:CGRectZero 
+                                         style:TTActivityLabelStyleWhiteBox 
+                                          text:@"Logging you in.."];
+    
+    [self.activityLabelForFrame setHidden:YES];
+    [self.activityLabelForTable setBackgroundColor:[UIColor clearColor]];
+    [self.activityLabelForTable setHidden:YES];
+    [self.activityLabelForTable setFrame:
+        CGRectMake(18, 114, floorf(self.loginTable.frame.size.width - 33), floorf(44.5 - 5))];
+    
     // add all the sub-views
     [self.view addSubview:self.logoView];
     [self.view addSubview:self.loginTable];
@@ -274,6 +301,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self.view addSubview:self.lostpwButton];
     [self.view addSubview:self.privacyButton];
     [self.view addSubview:self.tosButton];
+    
+    [self.view addSubview:self.activityLabelForFrame];
+    [self.view addSubview:self.activityLabelForTable];
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -314,11 +345,268 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     return NO;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)keyboardWillShow:(NSNotification*)notification {
+    if (self.signupButton.enabled) {
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             self.signupButton.alpha  = 0;
+                             self.loginButton.alpha   = 1;
+                             self.loginButton.enabled = YES;
+                         }];
+    }
+    
+    else {
+        CGRect loginFrame  = self.loginButton.frame;
+        CGRect signupFrame = self.signupButton.frame;
+        
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             self.signupButton.enabled = YES;
+                             self.signupButton.frame   = loginFrame;
+                             self.loginButton.frame    = signupFrame;
+                             self.signupButton.alpha   = 1;
+                             self.loginButton.alpha    = 0;
+                         }];
+    }
+    
+    self.isKeyboardPresent = YES;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)keyboardWillHide:(NSNotification*)notification {
+    if (self.signupButton.alpha == 0) {
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             self.signupButton.alpha  = 1;
+                             self.loginButton.alpha   = 0.5;
+                             self.loginButton.enabled = NO;
+                         }];
+    }
+    
+    else {
+        CGRect loginFrame  = self.loginButton.frame;
+        CGRect signupFrame = self.signupButton.frame;
+        
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             self.signupButton.enabled = NO;
+                             self.signupButton.frame   = loginFrame;
+                             self.loginButton.frame    = signupFrame;
+                             self.signupButton.alpha   = .5;
+                             self.loginButton.alpha    = 1.;
+                         }];
+    }
+
+    self.isKeyboardPresent = NO;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)signupButtonPressed {
+    
+    if (self.isKeyboardPresent) {
+        [self submit:FormValuesForSignup];
+    }
+    
+    else {
+        self.signupButton.enabled = NO;
+        self.loginButton.enabled  = YES;
+        
+        NSIndexPath * path = [NSIndexPath indexPathForRow:[self.loginTableDataSource.items count] 
+                                                inSection:0];
+        
+        [self.loginTableDataSource.items addObject:self.emailField];
+        [self.loginTable beginUpdates];
+        [self.loginTable insertRowsAtIndexPaths:[NSArray arrayWithObject:path] 
+                               withRowAnimation:UITableViewRowAnimationFade];    
+        [self.loginTable endUpdates];
+        
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             CGFloat tableHeight = self.loginTable.size.height + 44.5 * 1;
+                             CGPoint signupOrgin = 
+                             CGPointMake(20, tableHeight + self.loginTable.origin.y);
+                             CGPoint loginOrgin  = 
+                             CGPointMake(165, tableHeight + self.loginTable.origin.y); 
+                             
+                             self.loginTable.height   = tableHeight;
+                             self.signupButton.origin = signupOrgin;
+                             self.loginButton.origin  = loginOrgin;
+                             self.signupButton.alpha  = 0.5;
+                             self.loginButton.alpha   = 1;
+                             self.lostpwButton.alpha  = 0;
+                         }];
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)loginButtonPressed {
+    
+    if (self.isKeyboardPresent) {
+        [self submit:FormValuesForLogin];
+    }
+    
+    else {
+        self.signupButton.enabled = YES;
+        self.loginButton.enabled  = NO;
+        self.emailField.text      = @"";
+        
+        NSInteger lastTableIndex = [self.loginTableDataSource.items indexOfObject:self.emailField];        
+        NSIndexPath * path       = [NSIndexPath indexPathForRow:lastTableIndex inSection:0];
+        
+        [self.loginTableDataSource.items removeObject:self.emailField];
+        [self.loginTable beginUpdates];
+        [self.loginTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] 
+                               withRowAnimation:UITableViewRowAnimationFade];    
+        [self.loginTable endUpdates];
+        
+        [UIView animateWithDuration:0.5 
+                         animations:^{
+                             CGFloat tableHeight = self.loginTable.size.height - 44.5 * 1;
+                             CGPoint signupOrgin = 
+                             CGPointMake(20, tableHeight + self.loginTable.origin.y);
+                             CGPoint loginOrgin  = 
+                             CGPointMake(165, tableHeight + self.loginTable.origin.y); 
+                             
+                             self.loginTable.height   = tableHeight;
+                             self.signupButton.origin = signupOrgin;
+                             self.loginButton.origin  = loginOrgin;
+                             self.signupButton.alpha  = 1;
+                             self.loginButton.alpha   = 0.5;
+                             self.lostpwButton.alpha  = 1;
+                         }];
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)submit:(FormValuesFor)form {
+
+    // user is trying to login
+    if (form == FormValuesForLogin) {
+        // check for errors
+        if ((self.userField.text == nil || [self.userField.text isEqualToString:@""]) | 
+            (self.passField.text == nil || [self.passField.text isEqualToString:@""])){
+            [appDelegate showAlertWithMessage:@"All fields are required" andTitle:@""]; return;
+        }
+        
+        // build request
+        NSString          * url      = [NSString stringWithString:kAccountLoginUrl];
+        TTURLRequest      * request  = [TTURLRequest requestWithURL:url delegate:self];
+        TTURLJSONResponse * response = [[TTURLJSONResponse alloc] init];
+        
+        request.response  = response;
+        request.cacheExpirationAge = 1;
+        
+        [request.parameters setValue:self.userField.text forKey:@"vb_login_username"];
+        [request.parameters setValue:[self.passField.text md5Hash] forKey:@"vb_login_md5password"];
+        [request.parameters setValue:@"login" forKey:@"do"];
+        [request.parameters setValue:@"1" forKey:@"cookieuser"];
+        
+        // send request
+        [request setHttpMethod:@"POST"];
+        [request send];
+        
+        // show activity indicator
+        [self.activityLabelForFrame setHidden:NO];
+    }
+    
+    // user is trying to signup
+    if (form == FormValuesForSignup) {
+        // check for errors
+        if ((self.userField.text  == nil || [self.userField.text isEqualToString:@""]) | 
+            (self.passField.text  == nil || [self.passField.text isEqualToString:@""]) |
+            (self.emailField.text == nil || [self.emailField.text isEqualToString:@""])){
+            [appDelegate showAlertWithMessage:@"All fields are required" andTitle:@""]; return;
+        }
+        
+        // build request
+        NSString          * url      = [NSString stringWithString:kAccountSignupUrl];
+        TTURLRequest      * request  = [TTURLRequest requestWithURL:url delegate:self];
+        TTURLJSONResponse * response = [[TTURLJSONResponse alloc] init];
+        
+        request.response  = response;
+        request.cacheExpirationAge = 1;
+        
+        [request.parameters setValue:self.userField.text forKey:@"username"];
+        [request.parameters setValue:[self.passField.text md5Hash] forKey:@"password_md5"];
+        [request.parameters setValue:self.emailField.text forKey:@"email"];
+        [request.parameters setValue:@"addmember" forKey:@"do"];
+        
+        // send request
+        [request setHttpMethod:@"POST"];
+        [request send];
+        
+        // show activity indicator
+        [self.activityLabelForFrame setHidden:NO];
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)startLoginAnimation {
+    
+    NSMutableIndexSet * killIndexSet = [NSMutableIndexSet indexSet];
+    NSMutableArray    * killPaths    = [[NSMutableArray alloc] init];
+    
+    for (int i = 1; i < [[self.loginTableDataSource items] count]; i++) {
+        [killIndexSet addIndex:i];
+        [killPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];   
+    }
+    
+    [self.loginTableDataSource.items removeObjectsAtIndexes:killIndexSet];
+    [self.loginTable beginUpdates];
+    [self.loginTable deleteRowsAtIndexPaths:killPaths 
+                           withRowAnimation:UITableViewRowAnimationFade];    
+    [self.loginTable endUpdates];
+    
+    [self.userField setText:@""];
+    [self.userField setPlaceholder:@""];
+    [self.activityLabelForTable setHidden:NO];
+    
+    [self findAndResignFirstResonder:self.view];
+    
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void) {
+                         self.signupButton.alpha  = 0;
+                         self.loginButton.alpha   = 0;
+                         self.lostpwButton.alpha  = 0; 
+                         self.privacyButton.alpha = 0;
+                         self.tosButton.alpha     = 0;
+                         
+                         self.logoView.origin = 
+                         CGPointMake(self.logoView.origin.x, self.logoView.origin.y  + 85);
+                         
+                         self.loginTable.origin = 
+                         CGPointMake(self.loginTable.origin.x, self.loginTable.origin.y  + 85);
+                         
+                         self.activityLabelForTable.origin = 
+                         CGPointMake(self.activityLabelForTable.origin.x, 
+                                     self.activityLabelForTable.origin.y  + 85);
+                     }
+                     completion:^(BOOL finished) {                         
+                         [NSThread sleepForTimeInterval:1.0];
+                         
+                         UIGraphicsBeginImageContext(self.view.layer.bounds.size);
+                         [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+                         
+                         UIImage * ss = UIGraphicsGetImageFromCurrentImageContext();
+                         UIGraphicsEndImageContext();
+                         
+                         [[TTNavigator navigator] openURLAction:
+                          [[TTURLAction actionWithURLPath:@"vb://launcher"] applyAnimated:NO]];
+                         
+                         [[NSNotificationCenter defaultCenter]
+                          postNotificationName:@"endLoginAnimation" object:ss];
+                     }];
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UITextFieldDelagate
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     CGRect textFieldRect =
     [self.view.window convertRect:textField.bounds fromView:textField];
@@ -358,7 +646,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                      completion:nil];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     CGRect viewFrame    = self.view.frame;
     viewFrame.origin.y += self.animatedDistance;
@@ -372,12 +660,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                      completion:nil];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 
     UITextField * nextField = textField.nextField;
     
-    if (self.isLoggingIn) {
+    if ([self.emailField.text length] > 0) {
+
+    }
+    
+    else {
         if ([self.userField.text length] > 0 && [self.passField.text length] > 0) {
             NSLog(@"submit login details");
         } else {
@@ -388,5 +680,51 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     return NO;
 }
 
-@end
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - TTURLRequestDelagate
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)requestDidFinishLoad:(TTURLRequest*)request {
+    
+    TTURLJSONResponse * response = request.response;
+    NSDictionary      * results  = response.rootObject;    
+    
+    if ([[results valueForKey:@"hasErrors"] intValue] == 1) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"" 
+                                                         message:[results valueForKey:@"errorMsg"]
+                                                        delegate:self 
+                                               cancelButtonTitle:@"OK" 
+                                               otherButtonTitles:nil ];
+        [alert show];
+        return;
+    }
+    
+    if ([[results valueForKey:@"usergroupid"] intValue] == 8) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"" 
+                                                         message:@"You have been banned from the site."
+                                                        delegate:self 
+                                               cancelButtonTitle:@"OK" 
+                                               otherButtonTitles:nil ];
+        [alert show];
+//        [appDelegate logUserOut];
+        return;
+    }
+    
+    [self.activityLabelForFrame setHidden:YES];
+    [appDelegate logUserIn:results];
+    [self startLoginAnimation];
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - UIAlertViewDelegate
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)willPresentAlertView:(UIAlertView *)alertView {
+    [self.activityLabelForFrame setHidden:YES];
+}
+
+@end
