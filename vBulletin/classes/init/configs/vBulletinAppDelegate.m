@@ -20,6 +20,9 @@
 // Login Controller
 #import "AccountLoginController.h"
 
+// Launcher Controller
+#import "LauncherController.h"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +68,12 @@
     [map                from: @"vb://account/login"
        toModalViewController: [AccountLoginController class]
                     selector: nil ];
+
+    [map                from: @"vb://launcher"
+                      parent: nil
+            toViewController: [LauncherController class]
+                    selector: nil
+                  transition: 0];
 
     //
     // end url mapping
