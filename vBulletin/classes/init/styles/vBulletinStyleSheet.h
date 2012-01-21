@@ -94,6 +94,13 @@
  */
 - (UIViewAutoresizing)logoAutoMask;
 
+/**
+ * The vertical spacing used for login tables and buttons.
+ * 
+ * @return CGFloat
+ */
+- (CGFloat)loginVertSpacing;
+
 #pragma mark -
 
 /**
@@ -138,6 +145,58 @@
  */
 - (UIViewAutoresizing)loginTableAutoMask;
 
+#pragma mark -
+
+/**
+ * The image used for the signup button.
+ * 
+ * @return UIImage
+ */
+- (UIImage*)signupButtonImage;
+
+/**
+ * The image used for the login button.
+ * 
+ * @return UIImage
+ */
+- (UIImage*)loginButtonImage;
+
+#pragma mark -
+
+/**
+ * The font and sized used for text-based links on the login screen.
+ * 
+ * @return UIFont
+ */
+- (UIFont*)loginLinksFont;
+
+/**
+ * The color used for text-based links on the login screen.
+ * 
+ * @return UIColor
+ */
+- (UIColor*)loginLinksColor;
+
+/**
+ * The color used for text-based links on the login screen when touched.
+ * 
+ * @return UIColor
+ */
+- (UIColor*)loginLinksColorHighlighted;
+
+/**
+ * The shadow color used for text-based links on the login screen.
+ * 
+ * @return UIColor
+ */
+- (UIColor*)loginLinksColorShadow;
+
+/**
+ * The shadow color offset used for text-based links on the login screen.
+ * 
+ * @return CGSize
+ */
+- (CGSize)loginLinksShadowOffset;
 
 @end
 

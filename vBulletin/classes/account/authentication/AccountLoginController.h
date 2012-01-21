@@ -64,6 +64,42 @@
      * The textfield used for the entering in an email.
      */
     UITextField * _emailField;
+    
+    /**
+     * The login button.
+     */
+    UIButton * _loginButton;
+
+    /**
+     * The signup button.
+     */
+    UIButton * _signupButton;
+
+    /**
+     * The lost password button.
+     */
+    UIButton * _lostpwButton;
+
+    /**
+     * The privacy button.
+     */
+    UIButton * _privacyButton;
+
+    /**
+     * The terms of service button.
+     */
+    UIButton * _tosButton;
+
+    /**
+     * We keep track of the animated distance between the keyboard and the active field.
+     */
+    CGFloat _animatedDistance;
+    
+    /**
+     * Tells you whether or not the user is logging in or signning up, default is YES.
+     */
+    BOOL _isLoggingIn;
+
 }
 
 @property (nonatomic, retain) UIImageView      * logoView;
@@ -74,5 +110,29 @@
 @property (nonatomic, retain) UITextField      * passField;
 @property (nonatomic, retain) UITextField      * emailField;
 
+@property (nonatomic, retain) UIButton         * loginButton;
+@property (nonatomic, retain) UIButton         * signupButton;
+@property (nonatomic, retain) UIButton         * lostpwButton;
+@property (nonatomic, retain) UIButton         * privacyButton;
+@property (nonatomic, retain) UIButton         * tosButton;
+
+@property (nonatomic, readwrite) CGFloat         animatedDistance;
+@property (nonatomic, readwrite) BOOL            isLoggingIn;
+
+
+/**
+ * This method finds the active UIField and dismisses the keyboard from the screen.
+ * 
+ * @return UIColor
+ */
+- (BOOL)findAndResignFirstResonder:(UIView *)view;
+
+/**
+ * This method is run everytime a user types something into the text field. It's used to figure
+ * out whether or not we should show the user the next or go buttons on the keyboard.
+ *
+ * @return void
+ */
+- (void)textFieldDidChange:(id)sender;
 
 @end

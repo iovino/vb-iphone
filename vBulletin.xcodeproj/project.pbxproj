@@ -16,7 +16,9 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		BE20306314C7F4810009E7EA /* UITextField+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = BE20306214C7F4810009E7EA /* UITextField+Extended.m */; };
 		BE4AF6EF14BD6310009733AB /* libextThree20JSON+SBJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE4AF6E214BD62BD009733AB /* libextThree20JSON+SBJSON.a */; };
+		BE4AF77714BE8789009733AB /* vBulletin.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE4AF77614BE8789009733AB /* vBulletin.bundle */; };
 		BE9256401495C36700EB6BFB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BE92563F1495C36700EB6BFB /* Default.png */; };
 		BE9256431495C36B00EB6BFB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE9256421495C36B00EB6BFB /* Default@2x.png */; };
 		BE92575B1496E1BF00EB6BFB /* vBulletin-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE9257571496E1BF00EB6BFB /* vBulletin-Info.plist */; };
@@ -219,7 +221,10 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = vBulletin/three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = vBulletin/three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = vBulletin/three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		BE20306114C7F4810009E7EA /* UITextField+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+Extended.h"; path = "classes/init/textfields/UITextField+Extended.h"; sourceTree = "<group>"; };
+		BE20306214C7F4810009E7EA /* UITextField+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+Extended.m"; path = "classes/init/textfields/UITextField+Extended.m"; sourceTree = "<group>"; };
 		BE4AF6D514BD62BD009733AB /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = vBulletin/three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = "<group>"; };
+		BE4AF77614BE8789009733AB /* vBulletin.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = vBulletin.bundle; path = bundles/vBulletin.bundle; sourceTree = "<group>"; };
 		BE92563F1495C36700EB6BFB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BE9256421495C36B00EB6BFB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BE9257571496E1BF00EB6BFB /* vBulletin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "vBulletin-Info.plist"; path = "classes/init/configs/vBulletin-Info.plist"; sourceTree = "<group>"; };
@@ -327,6 +332,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BE20305D14C7F3F60009E7EA /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				BE20306114C7F4810009E7EA /* UITextField+Extended.h */,
+				BE20306214C7F4810009E7EA /* UITextField+Extended.m */,
+			);
+			name = TextFields;
+			sourceTree = "<group>";
+		};
 		BE4AF6D614BD62BD009733AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +409,7 @@
 				BE9257511496D4C900EB6BFB /* Request */,
 				BE9257501496D4C800EB6BFB /* Controllers */,
 				BE92574F1496D4C600EB6BFB /* Helpers */,
+				BE20305D14C7F3F60009E7EA /* TextFields */,
 			);
 			name = Init;
 			sourceTree = "<group>";
@@ -494,6 +509,7 @@
 		BEA11A791495C2410098110F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE4AF77614BE8789009733AB /* vBulletin.bundle */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				BEA11A7B1495C2410098110F /* InfoPlist.strings */,
 				BEA11A7E1495C2410098110F /* main.m */,
@@ -721,6 +737,7 @@
 				BE9256401495C36700EB6BFB /* Default.png in Resources */,
 				BE9256431495C36B00EB6BFB /* Default@2x.png in Resources */,
 				BE92575B1496E1BF00EB6BFB /* vBulletin-Info.plist in Resources */,
+				BE4AF77714BE8789009733AB /* vBulletin.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +753,7 @@
 				BE9257D31498569E00EB6BFB /* AccountLoginController.m in Sources */,
 				BE9257D9149857BD00EB6BFB /* UINavigationBar+CustomBackground.m in Sources */,
 				BE9257DA149857BD00EB6BFB /* vBulletinStyleSheet.m in Sources */,
+				BE20306314C7F4810009E7EA /* UITextField+Extended.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
