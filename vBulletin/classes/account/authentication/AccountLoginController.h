@@ -127,12 +127,4 @@
  */
 - (BOOL)findAndResignFirstResonder:(UIView *)view;
 
-/**
- * This method is run everytime a user types something into the text field. It's used to figure
- * out whether or not we should show the user the next or go buttons on the keyboard.
- *
- * @return void
- */
-- (void)textFieldDidChange:(id)sender;
-
 @end
