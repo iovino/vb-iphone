@@ -23,7 +23,7 @@ typedef enum  {
 } FormValuesFor;
 
 /**
- * @class       vBulletinStyleSheet
+ * @class       AccountLoginController
  * @abstract    The home screen where the user can login or signup.
  * 
  * @discussion
