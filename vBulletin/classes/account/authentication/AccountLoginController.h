@@ -14,6 +14,14 @@
 // Application's Delegate
 #import "vBulletinAppDelegate.h"
 
+/** 
+ * Enumeration to clarify which form is being submitted.
+ */
+typedef enum  {
+    FormValuesForLogin, /* The user submission is from the login form */
+    FormValuesForSignup /* The user submission is from the signup form */
+} FormValuesFor;
+
 /**
  * @class       vBulletinStyleSheet
  * @abstract    The home screen where the user can login or signup.
@@ -99,8 +107,16 @@
      * Tells us whether or not the keyboard is on the screen.
      */
     BOOL _isKeyboardPresent;
+    
+    /**
+     * The activity label used when the form submission is being sent to the remote server.
+     */
+    TTActivityLabel  * _activityLabelForFrame;
 
-
+    /**
+     * The activity label used while transitioning the user on a successful login or signup.
+     */
+    TTActivityLabel  * _activityLabelForTable;
 }
 
 @property (nonatomic, retain) UIImageView      * logoView;
@@ -119,6 +135,10 @@
 
 @property (nonatomic, readwrite) CGFloat         animatedDistance;
 @property (nonatomic, readwrite) BOOL            isKeyboardPresent;
+
+@property (nonatomic, retain) TTActivityLabel  * activityLabelForFrame;
+@property (nonatomic, retain) TTActivityLabel  * activityLabelForTable;
+
 
 /**
  * This method finds the active UIField and dismisses the keyboard from the screen.
@@ -162,5 +182,16 @@
  * @return void
  */
 - (void)loginButtonPressed;
+
+/**
+ * This method is executed when we're ready to send the sign or login data to the remote server.
+ * 
+ * @param enum
+ *  The 'FormValuesFor' enumeration to determine which form the submission came from. 
+ *
+ * @return void
+ */
+- (void)submit:(FormValuesFor)form;
+
 
 @end
