@@ -60,14 +60,21 @@
      */
     UIButton * _logoutButton;
 
+    /**
+     * The dictionary array of the current user's information.
+     */
+    NSDictionary * _userinfo;
+
 
 }
 
-@property (nonatomic, retain) UIView   * navView;
-@property (nonatomic, retain) UIButton * profileButton;
-@property (nonatomic, retain) UIButton * searchButton;
-@property (nonatomic, retain) UIButton * optionsButton;
-@property (nonatomic, retain) UIButton * logoutButton;
+@property (nonatomic, retain) UIView     * navView;
+@property (nonatomic, retain) UIButton   * profileButton;
+@property (nonatomic, retain) UIButton   * searchButton;
+@property (nonatomic, retain) UIButton   * optionsButton;
+@property (nonatomic, retain) UIButton   * logoutButton;
+
+@property (nonatomic, copy) NSDictionary * userinfo;
 
 /**
  * This method builds the top navigation bar. It's used in viewDidLoad as a way to keep the code

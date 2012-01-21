@@ -40,6 +40,8 @@
 @synthesize optionsButton = _optionsButton;
 @synthesize logoutButton  = _logoutButton;
 
+@synthesize userinfo      = _userinfo;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSObject
@@ -49,7 +51,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        // application's delegate
+        appDelegate = (vBulletinAppDelegate *) [[UIApplication sharedApplication] delegate];
 
+        // fetch the user's information
+        self.userinfo = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"vBUser"];
     }
     
     return self;
@@ -308,6 +314,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // logout request
+    if (actionSheet.tag == 0 && buttonIndex == 0) {
+        TTURLRequest * request = [TTURLRequest requestWithURL:kAccountLoginUrl delegate:self];
+        [request.parameters setValue:[self.userinfo valueForKey:@"logouthash"] 
+                              forKey:@"logouthash"];
+        [request setHttpMethod:@"GET"];
+        [request send];
+    }
 
 }
 
@@ -318,7 +332,28 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-
+    TTURLJSONResponse * response = request.response;
+    NSDictionary      * results  = response.rootObject;    
+    
+    // check for remote errors
+    if ([[results valueForKey:@"hasErrors"] intValue] == 1) {
+        [appDelegate showAlertWithMessage:[results valueForKey:@"errorMsg"] andTitle:@""]; return;
+    }
+    
+    // update avatar request
+    if ([[request.parameters valueForKey:@"do"] isEqualToString:@"updateavatar"]) {
+//        NSString * avatarUrl = 
+//        [NSString stringWithFormat:kAvatarFetchUrl, [self.userinfo valueForKey:@"userid"]];
+//        [[TTURLCache sharedCache] removeURL:avatarUrl fromDisk:YES];
+//        [self.avatarImageView setUrlPath:avatarUrl];    
+//        [self.avatarImageView reload];
+    }
+    
+    // logout request
+    if ([request.parameters valueForKey:@"logouthash"]) {
+        [appDelegate logUserOut];
+        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"vb://account/login"]];    
+    }
 }
 
 @end
