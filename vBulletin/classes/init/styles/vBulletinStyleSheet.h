@@ -201,10 +201,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 
+#pragma mark -
 #pragma mark launcher Screen
-
-#pragma mark launcher Screen - Navigation Bar
 
 /**
  * The background color or image used for the launcher's top navigation bar.
@@ -262,6 +260,16 @@
  */
 - (UIImage *)launcherNavActiveBgImage;
 
+
+#pragma mark -
+
+
+/**
+ * The background color or image used for the welcome panel.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherWelcomeBackground;
 
 @end
 

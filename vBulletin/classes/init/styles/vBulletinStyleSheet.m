@@ -151,14 +151,10 @@
 #pragma mark - 
 #pragma mark launcher Screen
 
-#pragma mark launcher Screen - Navigation Bar
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIColor *)launcherNavBackground {
     return [UIColor colorWithPatternImage:vBStyleImage(@"/bgs/subnav.png")];
 }
-
-#pragma mark -
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIFont *)launcherNavFont {
@@ -194,6 +190,14 @@
 - (UIImage *)launcherNavActiveBgImage {
     return vBStyleImage(@"/bgs/subnav_selected.png");
 }
+
+#pragma mark - 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (UIColor *)launcherWelcomeBackground {
+    return [UIColor colorWithPatternImage:vBStyleImage(@"/bgs/welcome_panel.png")];
+}
+
 
 @end
 
