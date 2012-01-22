@@ -146,4 +146,16 @@
  * @return void
  */
 - (void)didSelectAvatarImage;
+
+/**
+ * Uploads the avatar image to the remote server.
+ * 
+ *
+ * @param UIImage
+ *  The image object to upload.
+ *
+ * @return void
+ */
+- (void)uploadAvatar:(UIImage *)image;
+
 @end
