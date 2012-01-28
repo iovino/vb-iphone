@@ -73,6 +73,12 @@
 
         // fetch the user's information
         self.userinfo = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"vBUser"];
+
+        // title logo
+        self.navigationItem.titleView = TTSTYLEVAR(titleImage);
+
+        // hide the back button
+        [self.navigationItem setHidesBackButton:YES animated:NO];
     }
     
     return self;
@@ -339,7 +345,7 @@
 
     self.lastVisitedLabel = [[UILabel alloc] initWithFrame:CGRectMake(vistXAx, vistYAx, 200, 15)];
     [self.lastVisitedLabel setText:lastVisitString];
-    [self.lastVisitedLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11.00]];
+    [self.lastVisitedLabel setFont:[UIFont fontWithName:@"Helvetica" size:11.00]];
     [self.lastVisitedLabel setBackgroundColor:[UIColor clearColor]];
     [self.lastVisitedLabel setTextColor:RGBCOLOR(97, 97, 97)];
     [self.lastVisitedLabel setShadowColor:[UIColor whiteColor]];
