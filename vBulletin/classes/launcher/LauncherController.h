@@ -106,6 +106,11 @@
      */
     UILabel * _lastVisitedLabel;
 
+    /**
+     * The main launcher view. We're using our own launcher view instead of Three20's because
+     * we can control the view and icon paddings.
+     */
+    UIView * _launcherView;        
 }
 
 @property (nonatomic, copy) NSDictionary * userinfo;
@@ -122,9 +127,10 @@
 @property (nonatomic, retain) UIButton                * avatarImageButton;
 @property (nonatomic, retain) UIImagePickerController * avatarPicker;
 @property (nonatomic, retain) UIActivityIndicatorView * avatarActivity;
-
 @property (nonatomic, retain) UILabel                 * usernameLabel;
 @property (nonatomic, retain) UILabel                 * lastVisitedLabel;
+
+@property (nonatomic, retain) UIView                  * launcherView;
 
 /**
  * This method builds the top navigation bar. It's used in viewDidLoad as a way to keep the code
@@ -171,5 +177,13 @@
  * @return void
  */
 - (void)uploadAvatar:(UIImage *)image;
+
+/**
+ * This method builds the launcher box view that houses the main parts of the site 
+ * (forums, messages, etc.)
+ *
+ * @return void
+ */
+- (void)buildLauncherView;
 
 @end

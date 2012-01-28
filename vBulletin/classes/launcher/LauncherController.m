@@ -45,10 +45,10 @@
 @synthesize avatarImageButton = _avatarImageButton;
 @synthesize avatarPicker      = _avatarPicker;
 @synthesize avatarActivity    = _avatarActivity;
-
 @synthesize usernameLabel     = _usernameLabel;
 @synthesize lastVisitedLabel  = _lastVisitedLabel;
 
+@synthesize launcherView      = _launcherView;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,6 +102,9 @@
 
     // build the welcome view
     [self buildWelcomeBox];
+    
+    // build the launcher view
+    [self buildLauncherView];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -396,6 +399,18 @@
     
     [request setHttpMethod:@"POST"];
     [request send];
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)buildLauncherView {
+    
+    // launcher view
+    self.launcherView = [[UIView alloc] initWithFrame:CGRectMake(10, 103, 300, 300)];
+    self.launcherView.backgroundColor   = [UIColor whiteColor];
+    self.launcherView.layer.borderColor = RGBCOLOR(206, 210, 215).CGColor;
+    self.launcherView.layer.borderWidth = 1.0f;
+    
+    [self.view addSubview:self.launcherView];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
