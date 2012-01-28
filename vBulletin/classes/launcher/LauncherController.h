@@ -95,15 +95,26 @@
      * The activity label used to indicate when the avatar is being updated.
      */
     UIActivityIndicatorView * _avatarActivity;
+    
+    /**
+     * The label used for displaying the username in the welcome box.
+     */
+    UILabel * _usernameLabel;
+
+    /**
+     * The label used for displaying the user's last activity in the welcome box.
+     */
+    UILabel * _lastVisitedLabel;
+
 }
 
 @property (nonatomic, copy) NSDictionary * userinfo;
 
-@property (nonatomic, retain) UIView   * navView;
-@property (nonatomic, retain) UIButton * profileButton;
-@property (nonatomic, retain) UIButton * searchButton;
-@property (nonatomic, retain) UIButton * optionsButton;
-@property (nonatomic, retain) UIButton * logoutButton;
+@property (nonatomic, retain) UIView                  * navView;
+@property (nonatomic, retain) UIButton                * profileButton;
+@property (nonatomic, retain) UIButton                * searchButton;
+@property (nonatomic, retain) UIButton                * optionsButton;
+@property (nonatomic, retain) UIButton                * logoutButton;
 
 @property (nonatomic, retain) UIView                  * welcomeView;
 @property (nonatomic, retain) UIView                  * avatarView;
@@ -111,6 +122,9 @@
 @property (nonatomic, retain) UIButton                * avatarImageButton;
 @property (nonatomic, retain) UIImagePickerController * avatarPicker;
 @property (nonatomic, retain) UIActivityIndicatorView * avatarActivity;
+
+@property (nonatomic, retain) UILabel                 * usernameLabel;
+@property (nonatomic, retain) UILabel                 * lastVisitedLabel;
 
 /**
  * This method builds the top navigation bar. It's used in viewDidLoad as a way to keep the code

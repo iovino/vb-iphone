@@ -46,6 +46,10 @@
 @synthesize avatarPicker      = _avatarPicker;
 @synthesize avatarActivity    = _avatarActivity;
 
+@synthesize usernameLabel     = _usernameLabel;
+@synthesize lastVisitedLabel  = _lastVisitedLabel;
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Memory Management
@@ -307,10 +311,47 @@
                                  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.avatarActivity.frame = CGRectMake(16, 16, 20, 20);    
 
+
+    // username & last active labels
+    NSString * userName = 
+        [NSString stringWithFormat:@"Welcome, %@!", [self.userinfo valueForKey:@"username"]];
+
+    NSDate * lastVisitStamp = 
+        [NSDate dateWithTimeIntervalSince1970:[[self.userinfo valueForKey:@"lastvisit"] intValue]];
+
+    NSString * lastVisitString = 
+        [NSString stringWithFormat:@"You last visited %@.", lastVisitStamp];
+
+    // username label
+    CGFloat userXAx = self.avatarView.frame.origin.x + self.avatarView.frame.size.width +10;
+    
+    self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(userXAx, 17, 200, 15)];
+    [self.usernameLabel setText:userName];
+    [self.usernameLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
+    [self.usernameLabel setBackgroundColor:[UIColor clearColor]];
+    [self.usernameLabel setTextColor:RGBCOLOR(97, 97, 97)];
+    [self.usernameLabel setShadowColor:[UIColor whiteColor]];
+    [self.usernameLabel setShadowOffset:CGSizeMake(0, -1.0)];
+
+    // last visit label
+    CGFloat vistXAx  = self.usernameLabel.frame.origin.x;
+    CGFloat vistYAx  = self.usernameLabel.frame.origin.y + 15;
+
+    self.lastVisitedLabel = [[UILabel alloc] initWithFrame:CGRectMake(vistXAx, vistYAx, 200, 15)];
+    [self.lastVisitedLabel setText:lastVisitString];
+    [self.lastVisitedLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11.00]];
+    [self.lastVisitedLabel setBackgroundColor:[UIColor clearColor]];
+    [self.lastVisitedLabel setTextColor:RGBCOLOR(97, 97, 97)];
+    [self.lastVisitedLabel setShadowColor:[UIColor whiteColor]];
+    [self.lastVisitedLabel setShadowOffset:CGSizeMake(0, -1.0)];
+
     // add the sub-views
     [self.avatarView addSubview:self.avatarActivity];
     [self.avatarView addSubview:self.avatarImageButton];
     [self.welcomeView addSubview:self.avatarView];
+
+    [self.welcomeView addSubview:self.usernameLabel];
+    [self.welcomeView addSubview:self.lastVisitedLabel];
 
     [self.view addSubview:self.welcomeView];
 }
