@@ -93,6 +93,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         // set some defaults for the view
         self.view.backgroundColor = TTSTYLEVAR(backgroundColor);
+
+        // title logo
+        self.navigationItem.titleView = TTSTYLEVAR(titleImage);
         
         // notifications
         [[NSNotificationCenter defaultCenter] addObserver:self
