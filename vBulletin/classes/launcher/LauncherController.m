@@ -336,11 +336,11 @@
     
     self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(userXAx, 17, 200, 15)];
     [self.usernameLabel setText:userName];
-    [self.usernameLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
-    [self.usernameLabel setBackgroundColor:[UIColor clearColor]];
-    [self.usernameLabel setTextColor:RGBCOLOR(97, 97, 97)];
-    [self.usernameLabel setShadowColor:[UIColor whiteColor]];
-    [self.usernameLabel setShadowOffset:CGSizeMake(0, -1.0)];
+    [self.usernameLabel setFont:TTSTYLEVAR(launcherUsernameFont)];
+    [self.usernameLabel setBackgroundColor:TTSTYLEVAR(launcherUsernameBgColor)];
+    [self.usernameLabel setTextColor:TTSTYLEVAR(launcherUsernameTextColor)];
+    [self.usernameLabel setShadowColor:TTSTYLEVAR(launcherUsernameShadowColor)];
+    [self.usernameLabel setShadowOffset:TTSTYLEVAR(launcherUsernameShadowOffset)];
 
     // last visit label
     CGFloat vistXAx  = self.usernameLabel.frame.origin.x;
@@ -348,11 +348,11 @@
 
     self.lastVisitedLabel = [[UILabel alloc] initWithFrame:CGRectMake(vistXAx, vistYAx, 200, 15)];
     [self.lastVisitedLabel setText:lastVisitString];
-    [self.lastVisitedLabel setFont:[UIFont fontWithName:@"Helvetica" size:11.00]];
-    [self.lastVisitedLabel setBackgroundColor:[UIColor clearColor]];
-    [self.lastVisitedLabel setTextColor:RGBCOLOR(97, 97, 97)];
-    [self.lastVisitedLabel setShadowColor:[UIColor whiteColor]];
-    [self.lastVisitedLabel setShadowOffset:CGSizeMake(0, -1.0)];
+    [self.lastVisitedLabel setFont:TTSTYLEVAR(launcherActivityFont)];
+    [self.lastVisitedLabel setBackgroundColor:TTSTYLEVAR(launcherActivityBgColor)];
+    [self.lastVisitedLabel setTextColor:TTSTYLEVAR(launcherActivityTextColor)];
+    [self.lastVisitedLabel setShadowColor:TTSTYLEVAR(launcherActivityShadowColor)];
+    [self.lastVisitedLabel setShadowOffset:TTSTYLEVAR(launcherActivityShadowOffset)];
 
     // add the sub-views
     [self.avatarView addSubview:self.avatarActivity];

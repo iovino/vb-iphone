@@ -285,6 +285,77 @@
  */
 - (UIColor *)launcherWelcomeBackground;
 
+/**
+ * The font used for the username in the welcome box.
+ * 
+ * @return UIFont
+ */
+- (UIFont *)launcherUsernameFont;
+
+/**
+ * The background color for the username label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherUsernameBgColor;
+
+/**
+ * The text color for the username label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherUsernameTextColor;
+
+/**
+ * The shadow color for the username label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherUsernameShadowColor;
+
+/**
+ * The shadow offset for the username label.
+ * 
+ * @return CGSize
+ */
+- (CGSize)launcherUsernameShadowOffset;
+
+/**
+ * The font used for the activity in the welcome box.
+ * 
+ * @return UIFont
+ */
+- (UIFont *)launcherActivityFont;
+
+/**
+ * The background color for the activity label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherActivityBgColor;
+
+/**
+ * The text color for the activity label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherActivityTextColor;
+
+/**
+ * The shadow color for the activity label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherActivityShadowColor;
+
+/**
+ * The shadow offset for the activity label.
+ * 
+ * @return CGSize
+ */
+- (CGSize)launcherActivityShadowOffset;
+
+
 @end
 
 
