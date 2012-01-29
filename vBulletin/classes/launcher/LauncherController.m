@@ -414,88 +414,121 @@
     self.launcherView.backgroundColor   = [UIColor whiteColor];
     self.launcherView.layer.borderColor = RGBCOLOR(206, 210, 215).CGColor;
     self.launcherView.layer.borderWidth = 1.0f;
-    
+
     // the forums launcher button
     self.forumsButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 24, 54, 75)];
-    [self.forumsButton setTag:1];
+    [self.forumsButton setTag:1];   
     [self.forumsButton setTitle:@"Forums" forState:UIControlStateNormal];
-    [self.forumsButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
-    [self.forumsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.forumsButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    [self.forumsButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
-    [self.forumsButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.forumsButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.forumsButton setBackgroundImage:vBStyleImage(@"/buttons/launch_forums.png") forState:UIControlStateNormal];
+    [self.forumsButton.titleLabel setFont:TTSTYLEVAR(launcherButtonFont)];
+    [self.forumsButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                            forState:UIControlStateNormal];
+    [self.forumsButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                            forState:UIControlStateHighlighted];
+    [self.forumsButton.titleLabel setShadowOffset:TTSTYLEVAR(launcherButtonTitleShadowOffset)];
+    [self.forumsButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                  forState:UIControlStateNormal];
+    [self.forumsButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                  forState:UIControlStateNormal];
+    [self.forumsButton setBackgroundImage:TTSTYLEVAR(launcherButtonForumsImage) 
+                                 forState:UIControlStateNormal];
     [self.forumsButton setTitleEdgeInsets:UIEdgeInsetsMake(44.0, 0.0, 0.0, 0.0)];
     [self.forumsButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
     [self.forumsButton setBackgroundColor:[UIColor clearColor]];
-    [self.forumsButton addTarget:self action:@selector(launcherButtonSelected:) forControlEvents:UIControlStateHighlighted];
+    [self.forumsButton addTarget:self action:@selector(launcherButtonSelected:) 
+                forControlEvents:UIControlStateHighlighted];
     
     // the private messages button
     self.messagesButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 20, 83, 67)];
     [self.messagesButton setTag:2];
     [self.messagesButton setTitle:@"Messages" forState:UIControlStateNormal];
-    [self.messagesButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
-    [self.messagesButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.messagesButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    [self.messagesButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
-    [self.messagesButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.messagesButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.messagesButton setBackgroundImage:vBStyleImage(@"/buttons/launch_messages.png") forState:UIControlStateNormal];
+    [self.messagesButton.titleLabel setFont:TTSTYLEVAR(launcherButtonFont)];
+    [self.messagesButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                              forState:UIControlStateNormal];
+    [self.messagesButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                              forState:UIControlStateHighlighted];
+    [self.messagesButton.titleLabel setShadowOffset:TTSTYLEVAR(launcherButtonTitleShadowOffset)];
+    [self.messagesButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                    forState:UIControlStateNormal];
+    [self.messagesButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                    forState:UIControlStateNormal];
+    [self.messagesButton setBackgroundImage:TTSTYLEVAR(launcherButtonMessagesImage) 
+                                   forState:UIControlStateNormal];
     [self.messagesButton setTitleEdgeInsets:UIEdgeInsetsMake(58.0, 0.0, 0.0, 0.0)];
     [self.messagesButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
     [self.messagesButton setBackgroundColor:[UIColor clearColor]];
-    [self.messagesButton addTarget:self action:@selector(launcherButtonSelected:) forControlEvents:UIControlStateHighlighted];
+    [self.messagesButton addTarget:self action:@selector(launcherButtonSelected:) 
+                  forControlEvents:UIControlStateHighlighted];
     [self.launcherView addSubview:self.forumsButton];
 
     // the notifications buttons
     self.notifyButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 20, 89, 75)];
     [self.notifyButton setTag:3];
     [self.notifyButton setTitle:@"Notifications" forState:UIControlStateNormal];
-    [self.notifyButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
-    [self.notifyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.notifyButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    [self.notifyButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
-    [self.notifyButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.notifyButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.notifyButton setBackgroundImage:vBStyleImage(@"/buttons/launch_notifications.png") forState:UIControlStateNormal];
+    [self.notifyButton.titleLabel setFont:TTSTYLEVAR(launcherButtonFont)];
+    [self.notifyButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                            forState:UIControlStateNormal];
+    [self.notifyButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                            forState:UIControlStateHighlighted];
+    [self.notifyButton.titleLabel setShadowOffset:TTSTYLEVAR(launcherButtonTitleShadowOffset)];
+    [self.notifyButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                  forState:UIControlStateNormal];
+    [self.notifyButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                  forState:UIControlStateNormal];
+    [self.notifyButton setBackgroundImage:TTSTYLEVAR(launcherButtonNotificationImage) 
+                                 forState:UIControlStateNormal];
     [self.notifyButton setTitleEdgeInsets:UIEdgeInsetsMake(50.0, 0.0, 0.0, 0.0)];
     [self.notifyButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
     [self.notifyButton setBackgroundColor:[UIColor clearColor]];
-    [self.notifyButton addTarget:self action:@selector(launcherButtonSelected:) forControlEvents:UIControlStateHighlighted];
+    [self.notifyButton addTarget:self action:@selector(launcherButtonSelected:) 
+                forControlEvents:UIControlStateHighlighted];
 
     // the current button
     self.currentButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 110, 54, 75)];
     [self.currentButton setTag:4];
     [self.currentButton setTitle:@"Current" forState:UIControlStateNormal];
-    [self.currentButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
-    [self.currentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.currentButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    [self.currentButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
-    [self.currentButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.currentButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.currentButton setBackgroundImage:vBStyleImage(@"/buttons/launch_current.png") forState:UIControlStateNormal];
+    [self.currentButton.titleLabel setFont:TTSTYLEVAR(launcherButtonFont)];
+    [self.currentButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                             forState:UIControlStateNormal];
+    
+    [self.currentButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                             forState:UIControlStateHighlighted];
+    [self.currentButton.titleLabel setShadowOffset:TTSTYLEVAR(launcherButtonTitleShadowOffset)];
+    [self.currentButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                   forState:UIControlStateNormal];
+    [self.currentButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                   forState:UIControlStateNormal];
+    [self.currentButton setBackgroundImage:TTSTYLEVAR(launcherButtonCurrentImage) 
+                                  forState:UIControlStateNormal];
     [self.currentButton setTitleEdgeInsets:UIEdgeInsetsMake(80.0, 0.0, 0.0, 0.0)];
     [self.currentButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
     [self.currentButton setBackgroundColor:[UIColor clearColor]];
-    [self.currentButton addTarget:self action:@selector(launcherButtonSelected:) forControlEvents:UIControlStateHighlighted];
+    [self.currentButton addTarget:self action:@selector(launcherButtonSelected:) 
+                 forControlEvents:UIControlStateHighlighted];
 
     // the subscriptions button
     self.subscriptionButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 110, 85, 75)];
     [self.subscriptionButton setTag:5];
     [self.subscriptionButton setTitle:@"Subscriptions" forState:UIControlStateNormal];
-    [self.subscriptionButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
-    [self.subscriptionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.subscriptionButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    [self.subscriptionButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
-    [self.subscriptionButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.subscriptionButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
-    [self.subscriptionButton setBackgroundImage:vBStyleImage(@"/buttons/launch_subscriptions.png") forState:UIControlStateNormal];
+    [self.subscriptionButton.titleLabel setFont:TTSTYLEVAR(launcherButtonFont)];
+    [self.subscriptionButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                                  forState:UIControlStateNormal];
+    [self.subscriptionButton setTitleColor:TTSTYLEVAR(launcherButtonTitleColor) 
+                                  forState:UIControlStateHighlighted];
+    [self.subscriptionButton.titleLabel 
+     setShadowOffset:TTSTYLEVAR(launcherButtonTitleShadowOffset)];
+    [self.subscriptionButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                        forState:UIControlStateNormal];
+    [self.subscriptionButton setTitleShadowColor:TTSTYLEVAR(launcherButtonTitleShadowColor) 
+                                        forState:UIControlStateNormal];
+    [self.subscriptionButton setBackgroundImage:TTSTYLEVAR(launcherButtonSubscriptionImage) 
+                                       forState:UIControlStateNormal];
     [self.subscriptionButton setTitleEdgeInsets:UIEdgeInsetsMake(80.0, 0.0, 0.0, 0.0)];
     [self.subscriptionButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
     [self.subscriptionButton setBackgroundColor:[UIColor clearColor]];
-    [self.subscriptionButton addTarget:self action:@selector(launcherButtonSelected:) forControlEvents:UIControlStateHighlighted];
+    [self.subscriptionButton addTarget:self action:@selector(launcherButtonSelected:) 
+                      forControlEvents:UIControlStateHighlighted];
     
+    // add icons to launcher view
     [self.launcherView addSubview:self.forumsButton];
     [self.launcherView addSubview:self.messagesButton];
     [self.launcherView addSubview:self.notifyButton];

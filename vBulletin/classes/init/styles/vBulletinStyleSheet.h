@@ -355,6 +355,77 @@
  */
 - (CGSize)launcherActivityShadowOffset;
 
+#pragma mark -
+
+/**
+ * The launcher buttons font.
+ * 
+ * @return CGSize
+ */
+- (UIFont *)launcherButtonFont;
+
+/**
+ * The launcher buttons text color.
+ * 
+ * @return CGSize
+ */
+- (UIColor *)launcherButtonTitleColor;
+
+/**
+ * The launcher buttons text color when touched.
+ * 
+ * @return CGSize
+ */
+- (UIColor *)launcherButtonTitleColorHighlighted;
+
+/**
+ * The launcher buttons shadow text color.
+ * 
+ * @return CGSize
+ */
+- (UIColor *)launcherButtonTitleShadowColor;
+
+/**
+ * The shadow offset for launcher butons.
+ * 
+ * @return CGSize
+ */
+- (CGSize)launcherButtonTitleShadowOffset;
+
+/**
+ * The forums launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonForumsImage;
+
+/**
+ * The private messages launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonMessagesImage;
+
+/**
+ * The notifications launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonNotificationImage;
+
+/**
+ * The current launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonCurrentImage;
+
+/**
+ * The subscriptions launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonSubscriptionImage;
 
 @end
 
