@@ -126,6 +126,16 @@
      * The notifications button that will launch you into the forums notifications center.
      */
     UIButton * _notifyButton;
+
+    /**
+     * The current button that will launch you into the current threads and post center.
+     */
+    UIButton * _currentButton;
+
+    /**
+     * The subscriptions button that will launch you into the forums subscriptions center.
+     */
+    UIButton * _subscriptionButton;
 }
 
 @property (nonatomic, copy) NSDictionary * userinfo;
@@ -149,6 +159,8 @@
 @property (nonatomic, retain) UIButton                * forumsButton;
 @property (nonatomic, retain) UIButton                * messagesButton;
 @property (nonatomic, retain) UIButton                * notifyButton;
+@property (nonatomic, retain) UIButton                * currentButton;
+@property (nonatomic, retain) UIButton                * subscriptionButton;
 
 
 /**

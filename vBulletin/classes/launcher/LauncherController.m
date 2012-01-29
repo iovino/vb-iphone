@@ -31,27 +31,29 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation LauncherController
 
-@synthesize userinfo          = _userinfo;
+@synthesize userinfo            = _userinfo;
 
-@synthesize navView           = _navView;
-@synthesize profileButton     = _profileButton;
-@synthesize searchButton      = _searchButton;
-@synthesize optionsButton     = _optionsButton;
-@synthesize logoutButton      = _logoutButton;
+@synthesize navView             = _navView;
+@synthesize profileButton       = _profileButton;
+@synthesize searchButton        = _searchButton;
+@synthesize optionsButton       = _optionsButton;
+@synthesize logoutButton        = _logoutButton;
 
-@synthesize welcomeView       = _welcomeView;
-@synthesize avatarView        = _avatarView;
-@synthesize avatarImageView   = _avatarImageView;
-@synthesize avatarImageButton = _avatarImageButton;
-@synthesize avatarPicker      = _avatarPicker;
-@synthesize avatarActivity    = _avatarActivity;
-@synthesize usernameLabel     = _usernameLabel;
-@synthesize lastVisitedLabel  = _lastVisitedLabel;
+@synthesize welcomeView         = _welcomeView;
+@synthesize avatarView          = _avatarView;
+@synthesize avatarImageView     = _avatarImageView;
+@synthesize avatarImageButton   = _avatarImageButton;
+@synthesize avatarPicker        = _avatarPicker;
+@synthesize avatarActivity      = _avatarActivity;
+@synthesize usernameLabel       = _usernameLabel;
+@synthesize lastVisitedLabel    = _lastVisitedLabel;
 
-@synthesize launcherView      = _launcherView;
-@synthesize forumsButton      = _forumsButton;
-@synthesize messagesButton    = _messagesButton;
-@synthesize notifyButton      = _notifyButton;
+@synthesize launcherView        = _launcherView;
+@synthesize forumsButton        = _forumsButton;
+@synthesize messagesButton      = _messagesButton;
+@synthesize notifyButton        = _notifyButton;
+@synthesize currentButton       = _currentButton;
+@synthesize subscriptionButton  = _subscriptionButton;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -417,7 +419,7 @@
     self.forumsButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 24, 54, 75)];
     [self.forumsButton setTag:1];
     [self.forumsButton setTitle:@"Forums" forState:UIControlStateNormal];
-    [self.forumsButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.00]];
+    [self.forumsButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
     [self.forumsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.forumsButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     [self.forumsButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
@@ -433,7 +435,7 @@
     self.messagesButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 20, 83, 67)];
     [self.messagesButton setTag:2];
     [self.messagesButton setTitle:@"Messages" forState:UIControlStateNormal];
-    [self.messagesButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.00]];
+    [self.messagesButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
     [self.messagesButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.messagesButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     [self.messagesButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
@@ -450,7 +452,7 @@
     self.notifyButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 20, 89, 75)];
     [self.notifyButton setTag:3];
     [self.notifyButton setTitle:@"Notifications" forState:UIControlStateNormal];
-    [self.notifyButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.00]];
+    [self.notifyButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
     [self.notifyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.notifyButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     [self.notifyButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
@@ -462,9 +464,44 @@
     [self.notifyButton setBackgroundColor:[UIColor clearColor]];
     [self.notifyButton addTarget:self action:@selector(launcherButtonSelected:) forControlEvents:UIControlStateHighlighted];
 
+    // the current button
+    self.currentButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 110, 54, 75)];
+    [self.currentButton setTag:4];
+    [self.currentButton setTitle:@"Current" forState:UIControlStateNormal];
+    [self.currentButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
+    [self.currentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.currentButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    [self.currentButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
+    [self.currentButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
+    [self.currentButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
+    [self.currentButton setBackgroundImage:vBStyleImage(@"/buttons/launch_current.png") forState:UIControlStateNormal];
+    [self.currentButton setTitleEdgeInsets:UIEdgeInsetsMake(80.0, 0.0, 0.0, 0.0)];
+    [self.currentButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
+    [self.currentButton setBackgroundColor:[UIColor clearColor]];
+    [self.currentButton addTarget:self action:@selector(launcherButtonSelected:) forControlEvents:UIControlStateHighlighted];
+
+    // the subscriptions button
+    self.subscriptionButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 110, 85, 75)];
+    [self.subscriptionButton setTag:5];
+    [self.subscriptionButton setTitle:@"Subscriptions" forState:UIControlStateNormal];
+    [self.subscriptionButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.00]];
+    [self.subscriptionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.subscriptionButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    [self.subscriptionButton.titleLabel setShadowOffset:CGSizeMake(-1.0, 1.0)];
+    [self.subscriptionButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
+    [self.subscriptionButton setTitleShadowColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
+    [self.subscriptionButton setBackgroundImage:vBStyleImage(@"/buttons/launch_subscriptions.png") forState:UIControlStateNormal];
+    [self.subscriptionButton setTitleEdgeInsets:UIEdgeInsetsMake(80.0, 0.0, 0.0, 0.0)];
+    [self.subscriptionButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
+    [self.subscriptionButton setBackgroundColor:[UIColor clearColor]];
+    [self.subscriptionButton addTarget:self action:@selector(launcherButtonSelected:) forControlEvents:UIControlStateHighlighted];
+    
     [self.launcherView addSubview:self.forumsButton];
     [self.launcherView addSubview:self.messagesButton];
     [self.launcherView addSubview:self.notifyButton];
+    [self.launcherView addSubview:self.currentButton];
+    [self.launcherView addSubview:self.subscriptionButton];
+    
     [self.view addSubview:self.launcherView];
 }
 
