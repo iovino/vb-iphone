@@ -111,6 +111,21 @@
      * we can control the view and icon paddings.
      */
     UIView * _launcherView;        
+
+    /**
+     * The forums button that will launch you into the forum home.
+     */
+    UIButton * _forumsButton;
+
+    /**
+     * The messages button that will launch you into the private messages area.
+     */
+    UIButton * _messagesButton;
+
+    /**
+     * The notifications button that will launch you into the forums notifications center.
+     */
+    UIButton * _notifyButton;
 }
 
 @property (nonatomic, copy) NSDictionary * userinfo;
@@ -131,6 +146,10 @@
 @property (nonatomic, retain) UILabel                 * lastVisitedLabel;
 
 @property (nonatomic, retain) UIView                  * launcherView;
+@property (nonatomic, retain) UIButton                * forumsButton;
+@property (nonatomic, retain) UIButton                * messagesButton;
+@property (nonatomic, retain) UIButton                * notifyButton;
+
 
 /**
  * This method builds the top navigation bar. It's used in viewDidLoad as a way to keep the code
