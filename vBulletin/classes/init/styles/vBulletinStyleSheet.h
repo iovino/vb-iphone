@@ -68,6 +68,20 @@
  */
 - (UIColor*)fieldPlaceholderTextColor;
 
+/**
+ * The default image used when a user doesn't have an avatar.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)noAvatarImage;
+
+/**
+ * This is the image that gets used in place of the title on all navigation bars.
+ * 
+ * @return UIImageView
+ */
+- (UIImageView *)titleImage;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
@@ -197,6 +211,221 @@
  * @return CGSize
  */
 - (CGSize)loginLinksShadowOffset;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark launcher Screen
+
+/**
+ * The background color or image used for the launcher's top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavBackground;
+
+/**
+ * The font used for all text in the launcher's top navigation bar.
+ * 
+ * @return UIFont
+ */
+- (UIFont *)launcherNavFont;
+
+/**
+ * The default text color that's used for all text in the launcher's top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavNormalTextColor;
+
+/**
+ * The highlighted text color used when a user touches any text links in the top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavActiveTextColor;
+
+/**
+ * The default shawdow color that's used for all text in the launcher's top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavNormalTextShadowColor;
+
+/**
+ * The highlighted shawdow color used when a user touches any text links in the top navigation bar.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherNavActiveTextShadowColor;
+
+/**
+ * The default background image for any text links in the top navigation bar. 
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherNavNormalBgImage;
+
+/**
+ * The highlighted background image for any text links in the top navigation bar. 
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherNavActiveBgImage;
+
+
+#pragma mark -
+
+
+/**
+ * The background color or image used for the welcome panel.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherWelcomeBackground;
+
+/**
+ * The font used for the username in the welcome box.
+ * 
+ * @return UIFont
+ */
+- (UIFont *)launcherUsernameFont;
+
+/**
+ * The background color for the username label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherUsernameBgColor;
+
+/**
+ * The text color for the username label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherUsernameTextColor;
+
+/**
+ * The shadow color for the username label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherUsernameShadowColor;
+
+/**
+ * The shadow offset for the username label.
+ * 
+ * @return CGSize
+ */
+- (CGSize)launcherUsernameShadowOffset;
+
+/**
+ * The font used for the activity in the welcome box.
+ * 
+ * @return UIFont
+ */
+- (UIFont *)launcherActivityFont;
+
+/**
+ * The background color for the activity label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherActivityBgColor;
+
+/**
+ * The text color for the activity label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherActivityTextColor;
+
+/**
+ * The shadow color for the activity label.
+ * 
+ * @return UIColor
+ */
+- (UIColor *)launcherActivityShadowColor;
+
+/**
+ * The shadow offset for the activity label.
+ * 
+ * @return CGSize
+ */
+- (CGSize)launcherActivityShadowOffset;
+
+#pragma mark -
+
+/**
+ * The launcher buttons font.
+ * 
+ * @return CGSize
+ */
+- (UIFont *)launcherButtonFont;
+
+/**
+ * The launcher buttons text color.
+ * 
+ * @return CGSize
+ */
+- (UIColor *)launcherButtonTitleColor;
+
+/**
+ * The launcher buttons text color when touched.
+ * 
+ * @return CGSize
+ */
+- (UIColor *)launcherButtonTitleColorHighlighted;
+
+/**
+ * The launcher buttons shadow text color.
+ * 
+ * @return CGSize
+ */
+- (UIColor *)launcherButtonTitleShadowColor;
+
+/**
+ * The shadow offset for launcher butons.
+ * 
+ * @return CGSize
+ */
+- (CGSize)launcherButtonTitleShadowOffset;
+
+/**
+ * The forums launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonForumsImage;
+
+/**
+ * The private messages launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonMessagesImage;
+
+/**
+ * The notifications launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonNotificationImage;
+
+/**
+ * The current launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonCurrentImage;
+
+/**
+ * The subscriptions launcher icon.
+ * 
+ * @return UIImage
+ */
+- (UIImage *)launcherButtonSubscriptionImage;
 
 @end
 
