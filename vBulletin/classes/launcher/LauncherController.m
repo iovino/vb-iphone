@@ -84,6 +84,13 @@
 
         // hide the back button
         [self.navigationItem setHidesBackButton:YES animated:NO];
+        
+        // notification to end the login animation
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(endLoginAnimation:)
+                                                     name:@"endLoginAnimation"
+                                                   object:nil ];
+
     }
     
     return self;
@@ -115,6 +122,10 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewDidUnload {
     [super viewDidUnload];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"endLoginAnimation"
+                                                  object:nil];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,6 +137,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Private
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)endLoginAnimation:(id)sender {
+    UIImageView * loginView = 
+        [[UIImageView alloc] initWithImage:(UIImage *)[sender valueForKey:@"object"]];
+    [self.view addSubview:loginView];
+    
+    [UIView animateWithDuration:1.3 animations:^{
+        loginView.alpha = 0.0;
+        loginView.frame = CGRectMake(-60, -60, 440, 600);
+    }];    
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)buildNavigationBar {

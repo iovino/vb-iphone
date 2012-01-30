@@ -227,4 +227,15 @@
  */
 - (void)launcherButtonSelected:(id)sender;
 
+/**
+ * Ends the login animation by expanding the login screen until it's off the screen. Sort of an
+ * explosion like effect.
+ *
+ * @param id
+ *  A screenshot of the login screen.
+ *
+ * @return void
+ */
+- (void)endLoginAnimation:(id)sender;
+
 @end
