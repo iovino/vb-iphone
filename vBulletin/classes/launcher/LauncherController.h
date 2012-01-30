@@ -200,7 +200,6 @@
 
 /**
  * Uploads the avatar image to the remote server.
- * 
  *
  * @param UIImage
  *  The image object to upload.
@@ -216,5 +215,16 @@
  * @return void
  */
 - (void)buildLauncherView;
+
+/**
+ * This method is executed when a launcher button is touched. We save the URL path and the 
+ * controller of the button and start the animation transition.
+ *
+ * @param id
+ *  The button object that was touched.
+ *
+ * @return void
+ */
+- (void)launcherButtonSelected:(id)sender;
 
 @end
