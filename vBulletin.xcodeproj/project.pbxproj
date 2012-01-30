@@ -32,6 +32,7 @@
 		BEA11A771495C2410098110F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA11A761495C2410098110F /* CoreGraphics.framework */; };
 		BEA11A7D1495C2410098110F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEA11A7B1495C2410098110F /* InfoPlist.strings */; };
 		BEA11A7F1495C2410098110F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA11A7E1495C2410098110F /* main.m */; };
+		BEF4E17D14D648650036306B /* ForumHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF4E17C14D648650036306B /* ForumHomeController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +248,8 @@
 		BEA11A761495C2410098110F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BEA11A7C1495C2410098110F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEA11A7E1495C2410098110F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BEF4E17B14D648650036306B /* ForumHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForumHomeController.h; path = classes/forums/home/ForumHomeController.h; sourceTree = "<group>"; };
+		BEF4E17C14D648650036306B /* ForumHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForumHomeController.m; path = classes/forums/home/ForumHomeController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +363,7 @@
 				BE92574E1496D48100EB6BFB /* Init */,
 				BE92574D1496D48000EB6BFB /* Account */,
 				BE92574C1496D47E00EB6BFB /* Launcher */,
+				BEF4E17914D647F90036306B /* Forums */,
 				BE92574B1496D47900EB6BFB /* Private */,
 				BE92574A1496D47600EB6BFB /* Subscriptions */,
 				BE9257491496D46F00EB6BFB /* Notifications */,
@@ -521,6 +525,23 @@
 			);
 			name = "Supporting Files";
 			path = vBulletin;
+			sourceTree = "<group>";
+		};
+		BEF4E17914D647F90036306B /* Forums */ = {
+			isa = PBXGroup;
+			children = (
+				BEF4E17A14D6480D0036306B /* Home */,
+			);
+			name = Forums;
+			sourceTree = "<group>";
+		};
+		BEF4E17A14D6480D0036306B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BEF4E17B14D648650036306B /* ForumHomeController.h */,
+				BEF4E17C14D648650036306B /* ForumHomeController.m */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -760,6 +781,7 @@
 				BE9257DA149857BD00EB6BFB /* vBulletinStyleSheet.m in Sources */,
 				BE20306314C7F4810009E7EA /* UITextField+Extended.m in Sources */,
 				BE20306614CB1B770009E7EA /* LauncherController.m in Sources */,
+				BEF4E17D14D648650036306B /* ForumHomeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
