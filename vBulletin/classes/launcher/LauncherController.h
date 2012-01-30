@@ -14,6 +14,12 @@
 // Application's Delegate
 #import "vBulletinAppDelegate.h"
 
+// The Forum's Home Controller
+#import "ForumHomeController.h"
+
+// Add all the classes used for transitioning via the launchpad
+@class ForumHomeController;
+
 /**
  * @class       LauncherController
  * @abstract    The user's homepage after they've logged in or signed up.
@@ -136,6 +142,27 @@
      * The subscriptions button that will launch you into the forums subscriptions center.
      */
     UIButton * _subscriptionButton;
+    
+    /**
+     * This controller that we're about to transistion the user to when they touch one of the
+     * launcher items.
+     */
+    UIViewController * _transController;
+
+    /**
+     * This view is used to display the shadow effect when the user is transisioning to a new page.
+     */
+    UIView * _transShadowView;
+
+    /**
+     * The url path to transistion the user to.
+     */
+    NSMutableString * _transToUrlPath;
+    
+    /**
+     * The ForumHomeController, one of the controllers that the user can transistion to.
+     */
+    ForumHomeController * _forumHomeLauncher;
 }
 
 @property (nonatomic, copy) NSDictionary * userinfo;
@@ -161,6 +188,12 @@
 @property (nonatomic, retain) UIButton                * notifyButton;
 @property (nonatomic, retain) UIButton                * currentButton;
 @property (nonatomic, retain) UIButton                * subscriptionButton;
+
+@property (nonatomic, retain) UIViewController        * transController;
+@property (nonatomic, retain) UIView                  * transShadowView;
+@property (nonatomic, copy) NSMutableString           * transToUrlPath;
+
+@property (nonatomic, retain) ForumHomeController     * forumHomeLauncher;
 
 
 /**
@@ -237,5 +270,34 @@
  * @return void
  */
 - (void)endLoginAnimation:(id)sender;
+
+/**
+ * This method is used to actually transition the user to the controller after the animation has
+ * completed.
+ *
+ * @param NSString
+ *  The animation ID.
+ *
+ * @param BOOL
+ *  Boolean value to tell us if the animation has finished or not.
+ *
+ * @param void
+ *  Any special or extra objects that need to be used.
+ *
+ * @return void
+ */
+- (void)animationDidStop:(NSString *)animationID finished:(BOOL)finished context:(void *)context;
+
+/**
+ * This method is used to expand or shrink the screen depending if the user's action. Expansion
+ * happens when a launcher item it touched, and shrinking happens when the user is coming back 
+ * to the launcher view from one of the launcher items.
+ *
+ * @param NSNumber
+ *  The duration, in seconds, of the animation.
+ *
+ * @return void
+ */
+- (void)animateTransition:(NSNumber *)duration;
 
 @end

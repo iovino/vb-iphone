@@ -26,6 +26,11 @@
 // Three20's Date Additions
 #import <Three20Core/NSDateAdditions.h>
 
+// Launchers Constants for Transitions
+#define TIME_FOR_SHRINKING 0.31f // Has to be different from SPEED_OF_EXPANDING
+#define TIME_FOR_EXPANDING 0.30f // Has to be different from SPEED_OF_SHRINKING
+#define SCALED_DOWN_AMOUNT 0.01  // For example, 0.01 is one hundredth of the normal size
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,6 +59,13 @@
 @synthesize notifyButton        = _notifyButton;
 @synthesize currentButton       = _currentButton;
 @synthesize subscriptionButton  = _subscriptionButton;
+
+@synthesize transController     = _transController;
+@synthesize transShadowView     = _transShadowView;
+@synthesize transToUrlPath      = _transToUrlPath;
+
+@synthesize forumHomeLauncher   = _forumHomeLauncher;
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,12 +97,18 @@
         // hide the back button
         [self.navigationItem setHidesBackButton:YES animated:NO];
         
+        // instantiate the launchers transition controller and view
+        self.transController = [[UIViewController alloc] init];
+        self.transShadowView = [[UIView alloc] init];
+
+        // all controllers that the user can transision to
+        self.forumHomeLauncher = [[ForumHomeController alloc] init];
+        
         // notification to end the login animation
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(endLoginAnimation:)
                                                      name:@"endLoginAnimation"
                                                    object:nil ];
-
     }
     
     return self;
@@ -102,7 +120,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewWillAppear:(BOOL)animated {
-
+	[self performSelector:@selector(animateTransition:) 
+               withObject:[NSNumber numberWithFloat:TIME_FOR_SHRINKING]];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -117,6 +136,9 @@
     
     // build the launcher view
     [self buildLauncherView];
+    
+    // set the default alpha to zero for the transition view
+    [self.transShadowView setAlpha:0];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -563,7 +585,70 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)launcherButtonSelected:(id)sender {
+    UIButton * button = sender;
+    
+    if (button.tag == 1) {
+        self.transToUrlPath  = [NSMutableString stringWithString:@"vb://forums"];;
+        self.transController = self.forumHomeLauncher;
+    }
+        
+    [self performSelector:@selector(animateTransition:) 
+               withObject:[NSNumber numberWithFloat:TIME_FOR_EXPANDING]];
 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)animationDidStop:(NSString *)animationID finished:(BOOL)finished context:(void *)context {
+    
+    self.view.userInteractionEnabled = YES;
+    
+	if ([animationID isEqualToString:@"animationExpand"]) {
+        [[TTNavigator navigator] openURLAction:
+         [[TTURLAction actionWithURLPath:self.transToUrlPath] applyAnimated:NO]];
+	}
+	else {
+		self.transController.view.hidden=true;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)animateTransition:(NSNumber *)duration {
+    
+    self.view.userInteractionEnabled=NO;    
+    
+    self.transShadowView.backgroundColor = [UIColor blackColor];
+    self.transShadowView.frame = [[UIScreen mainScreen] bounds];
+    
+    [self.view addSubview:self.transShadowView];
+    [self.view addSubview:self.transController.view];
+    
+    if ((self.transController.view.hidden == false) && 
+        ([duration floatValue] == TIME_FOR_EXPANDING)) {
+		self.transController.view.frame     = [[UIScreen mainScreen] bounds];
+		self.transController.view.transform = 
+        CGAffineTransformMakeScale(SCALED_DOWN_AMOUNT, SCALED_DOWN_AMOUNT);
+	}
+	
+    self.transController.view.hidden=false;
+    
+	if ([duration floatValue] == TIME_FOR_SHRINKING) {
+		[UIView beginAnimations:@"animationShrink" context:NULL];
+		[UIView setAnimationDuration:[duration floatValue]];
+        [self.transShadowView setAlpha:0];
+		self.transController.view.transform = 
+        CGAffineTransformMakeScale(SCALED_DOWN_AMOUNT, SCALED_DOWN_AMOUNT);
+	}
+    
+	else {
+		[UIView beginAnimations:@"animationExpand" context:NULL];
+		[UIView setAnimationDuration:[duration floatValue]];
+        [self.transShadowView setAlpha:1];
+		self.transController.view.transform=CGAffineTransformMakeScale(1, 1);
+	}
+    
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+	[UIView commitAnimations];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
