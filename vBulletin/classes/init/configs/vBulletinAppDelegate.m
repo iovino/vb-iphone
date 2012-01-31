@@ -23,6 +23,9 @@
 // Launcher Controller
 #import "LauncherController.h"
 
+// Forumhome Controller
+#import "ForumHomeController.h"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,6 +75,13 @@
     [map                from: @"vb://launcher"
                       parent: nil
             toViewController: [LauncherController class]
+                    selector: nil
+                  transition: 0];
+
+    // forumhome
+    [map                from: @"vb://forums"
+                      parent: nil
+            toViewController: [ForumHomeController class]
                     selector: nil
                   transition: 0];
 
