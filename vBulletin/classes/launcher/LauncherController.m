@@ -65,7 +65,7 @@
 @synthesize transToUrlPath      = _transToUrlPath;
 
 @synthesize forumHomeLauncher   = _forumHomeLauncher;
-
+@synthesize privateLauncher     = _privateLauncher;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -591,7 +591,12 @@
         self.transToUrlPath  = [NSMutableString stringWithString:@"vb://forums"];;
         self.transController = self.forumHomeLauncher;
     }
-        
+
+    if (button.tag == 2) {
+        self.transToUrlPath  = [NSMutableString stringWithString:@"vb://private/folders"];;
+        self.transController = self.privateLauncher;
+    }
+
     [self performSelector:@selector(animateTransition:) 
                withObject:[NSNumber numberWithFloat:TIME_FOR_EXPANDING]];
 

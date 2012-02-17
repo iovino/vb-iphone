@@ -26,6 +26,9 @@
 // Forumhome Controller
 #import "ForumHomeController.h"
 
+#import "PrivateFoldersController.h"
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,6 +88,12 @@
                     selector: nil
                   transition: 0];
 
+    // Private Messages - View list of folders
+    [map                from: @"vb://private/folders"
+                      parent: nil
+            toViewController: [PrivateFoldersController class]
+                    selector: nil
+                  transition: 0];
     //
     // end url mapping
     //

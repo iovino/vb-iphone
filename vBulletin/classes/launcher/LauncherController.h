@@ -17,8 +17,12 @@
 // The Forum's Home Controller
 #import "ForumHomeController.h"
 
+// Private Messages Home
+#import "PrivateFoldersController.h"
+
 // Add all the classes used for transitioning via the launchpad
 @class ForumHomeController;
+@class PrivateFoldersController;
 
 /**
  * @class       LauncherController
@@ -162,7 +166,8 @@
     /**
      * The ForumHomeController, one of the controllers that the user can transistion to.
      */
-    ForumHomeController * _forumHomeLauncher;
+    ForumHomeController         * _forumHomeLauncher;
+    PrivateFoldersController    * _privateLauncher;
 }
 
 @property (nonatomic, copy) NSDictionary * userinfo;
@@ -193,7 +198,8 @@
 @property (nonatomic, retain) UIView                  * transShadowView;
 @property (nonatomic, copy) NSMutableString           * transToUrlPath;
 
-@property (nonatomic, retain) ForumHomeController     * forumHomeLauncher;
+@property (nonatomic, retain) ForumHomeController      * forumHomeLauncher;
+@property (nonatomic, retain) PrivateFoldersController * privateLauncher;
 
 
 /**
@@ -205,7 +211,7 @@
 - (void)buildNavigationBar;
 
 /**
- * When a user touchs one of the top navigation buttons, this method is executed and runs the 
+ * When a user touches one of the top navigation buttons, this method is executed and runs the 
  * appropriate code or task.
  *
  * @param id

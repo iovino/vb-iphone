@@ -20,7 +20,7 @@
  * Example:
  * http://www.vbulletin.com/
  */
-#define BASE_URL  @"http://192.168.0.198/iforums/"
+#define BASE_URL  @"http://192.168.0.196/iforums/"
 
 /**
  * Forums URL

@@ -16,13 +16,23 @@
 
 /**
  * @class       ForumHomeController
- * @abstract    
- * 
- * @discussion
- * 
- * 
- * 
+ * @abstract    The main class that shows a list of avaliable forums to the user.
  */
 @interface ForumHomeController : TTTableViewController <UIActionSheetDelegate> {}
+
+/**
+ * This method is used to take you back to the launcher screen. It takes a screenshot of the current
+ * view and shrinks it until you're back on the launcger view.
+ *
+ * @return void
+ */
+- (void)backToLauncher;
+
+/**
+ * The action sheet that is used to show you any avaliable options.
+ * 
+ * @return void
+ */
+- (void)actionSheet;
 
 @end

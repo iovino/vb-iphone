@@ -27,8 +27,8 @@
  */
 @interface vBulletinStyleSheet : TTDefaultStyleSheet {}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark Common Styles
 
@@ -82,8 +82,8 @@
  */
 - (UIImageView *)titleImage;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark Login / Signup Screen
 
@@ -427,6 +427,198 @@
  */
 - (UIImage *)launcherButtonSubscriptionImage;
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Basic Table Cells
+
+/**
+ * 
+ * 
+ * @return UIFont
+ */
+- (UIFont *)forumTableCellTitleFont;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellTitleTextColor;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellTitleTextColorSelected;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellTitleShadowColor;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellTitleShadowColorSelected;
+
+/**
+ * 
+ * 
+ * @return CGSize
+ */
+- (CGSize)forumTableCellTitleShadowOffset;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellTitleBackgroundColor;
+
+/**
+ * 
+ * 
+ * @return UIFont
+ */
+- (UIFont *)forumTableCellDetailFont;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellDetailBackgroundColor;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellDetailTextColor;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellDetailTextColorSelected;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellDetailShadowColor;
+
+/**
+ * 
+ * 
+ * @return UIColor
+ */
+- (UIColor *)forumTableCellDetailShadowColorSelected;
+
+/**
+ * 
+ * 
+ * @return CGSize
+ */
+- (CGSize)forumTableCellDetailShadowOffset;
+
+
+- (NSInteger)forumTableGroupHeaderPadding;
+
+- (NSInteger)forumTableHeaderPadding;
+
+- (NSInteger)forumTableHeaderTextLineSpacing;
+
+- (UIImage *)forumTableHeaderBackgroundImage;
+
+- (UIColor*)forumTableHeaderBottomBorderColor;
+
+- (UIColor*)forumTableHeaderTitleBackgroundColor;
+
+- (UIColor*)forumTableHeaderTitleTextColor;
+
+- (UIFont*)forumTableHeaderTitleFont;
+
+- (NSInteger)forumTableHeaderTitleMaxLines;
+
+- (UIColor*)forumTableHeaderDescBackgroundColor;
+
+- (UIColor*)forumTableHeaderDescTextColor;
+
+- (UIFont*)forumTableHeaderDescFont;
+
+- (NSInteger)forumTableHeaderDescMaxLines;
+
+#pragma mark Forum - Table Cell
+
+- (UIImage *)forumTableCellBackground;
+
+- (UIColor *)forumTableCellBackgroundSelected;
+
+- (UIColor *)forumTableCellSeparatorColor;
+
+- (NSInteger)forumTableCellPadding;
+
+#pragma mark Forum - Table Cell - Icon
+
+- (NSInteger)forumTableCellImageMargin;
+
+- (NSInteger)forumTableCellImageWidth;
+
+#pragma mark Forum - Table Cell - Views & Replies Icons
+
+- (NSInteger)forumTableCellStatsSpacing;
+
+- (CGSize)forumTableCellStatsImageSize;
+
+- (UIImage *)forumTableCellStatsViewsImage;
+
+- (UIImage *)forumTableCellStatsRepliesImage;
+
+#pragma mark Forum - Table Cell - Announcement Cell
+
+- (UIImage *)forumTableCellAnnounceBackground;
+
+- (UIImage *)forumTableCellAnnounceBackgroundSelected;
+
+- (UIColor *)forumTableCellAnnounceTextColor;
+
+- (UIColor *)forumTableCellAnnounceTextShadowColor;
+
+- (CGSize)forumTableCellAnnounceTextShadowOffset;
+
+- (UIView *)forumTableCellAnnounceAccessoryView;
+
+#pragma mark Forum - Table Cell - Misc
+
+- (NSInteger)forumTableCellTextLineSpacing;
+
+- (NSInteger)forumTableCellDefaultTextHeight;
+
+- (NSString *)forumTableCellForumLightbulbPath;
+
+- (NSString *)forumTableCellForumLightbulbPathActive;
+
+- (NSString *)forumTableCellThreadStickyIconPath;
+
+- (NSString *)forumTableCellThreadDotIconPath:(NSString *)statusicon;
+
 @end
+
+
+
+
+
+
+
 
 
