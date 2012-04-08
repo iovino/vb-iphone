@@ -12,24 +12,34 @@
  */
 
 // Header File
-#import "ForumHomeController.h"
+#import "ForumDisplayController.h"
 
 // Application Stylesheet
 #import "vBulletinStyleSheet.h"
 
 // Forumhome's Datasource
-#import "ForumHomeDataSource.h"
+#import "ForumDisplayDataSource.h"
 
 // Forumhome's Delegate
-#import "ForumHomeDelegate.h"
+#import "ForumDisplayDelegate.h"
 
 // Three20's UI Additition
 #import "Three20UI/UIViewAdditions.h"
 
+// QuartzCore Framework
+#import <QuartzCore/QuartzCore.h>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-@implementation ForumHomeController
+@implementation ForumDisplayController
+
+@synthesize forumid          = _forumid;
+@synthesize dataSource2      = _dataSource2;
+//@synthesize toolbar          = _toolbar;
+//@synthesize toolbarButton    = _toolbarButton;
+//@synthesize inPseudoEditMode = _inPseudoEditMode;
+//@synthesize selectedItems    = _selectedItems;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,14 +58,25 @@
 #pragma mark - NSObject
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithForumId:(NSString *)forumId {
     
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nil bundle:nil];
     
     if (self) {
         // title logo
         self.navigationItem.titleView = TTSTYLEVAR(titleImage);
-                
+
+        // Application Delegate
+        appDelegate  = (vBulletinAppDelegate *) [[UIApplication sharedApplication] delegate];
+        self.forumid = forumId;
+        
+        // notifications
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(reloadForumsDisplay)
+                                                     name:@"reloadForumsDisplay"
+                                                   object:nil ];
+        
+        
     }
     
     return self;
@@ -75,20 +96,15 @@
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction 
                                                   target:self 
                                                   action:@selector(actionSheet)];
-
-    // set the left navigation button
-    [[self navigationItem] setLeftBarButtonItem:
-     [[UIBarButtonItem alloc] initWithTitle:@"Home" 
-                                      style:UIBarButtonItemStylePlain 
-                                     target:self 
-                                     action:@selector(backToLauncher)]];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"reloadForumsDisplay"
+                                                  object:nil];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -103,21 +119,6 @@
 #pragma mark - Private
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)backToLauncher {
-    // create a screenshot
-    UIGraphicsBeginImageContext(self.view.layer.bounds.size);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage * ss = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    UIImageView * ssImageView = [[UIImageView alloc] initWithImage:ss];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"comingHome"
-                                                        object:ssImageView];
-    
-    [self.navigationController popViewControllerAnimated:NO];
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)actionSheet {
     UIActionSheet * sheet = [[UIActionSheet alloc] init];
     [sheet addButtonWithTitle:@"Mark Forums Read"];
@@ -127,6 +128,16 @@
     [sheet showInView:self.view];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)reloadForumsDisplay {
+    // use this to see if sub forums are there or not
+    // [self.dataSource numberOfSectionsInTableView:self.tableView]);
+    
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] 
+                          atScrollPosition:UITableViewScrollPositionTop 
+                                  animated:YES];
+    [self reload];
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UIActionSheetDelegate
@@ -138,18 +149,23 @@
     } 
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark TTTableView
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark TTTableViewDelegate
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-    self.dataSource = [[ForumHomeDataSource alloc] init];
+    ForumDisplayDataSource * dataSource = 
+        [[ForumDisplayDataSource alloc] initWithForumId:[self forumid]];
+    
+    self.dataSource  = dataSource; // read only
+    self.dataSource2 = dataSource;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-- (id<UITableViewDelegate>)createDelegate {
-    return [[ForumHomeDelegate alloc] initWithController:self];
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id<TTTableViewDelegate>) createDelegate {
+    return [[ForumDisplayDelegate alloc] initWithController:self];
 }
 
 @end

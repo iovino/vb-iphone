@@ -26,6 +26,10 @@
 // Forumhome Controller
 #import "ForumHomeController.h"
 
+// Forum Display Controller
+#import "ForumDisplayController.h"
+
+// Messages Folder Controller
 #import "PrivateFoldersController.h"
 
 
@@ -88,6 +92,14 @@
                     selector: nil
                   transition: 0];
 
+    // forumdisplay
+    [map                from: @"vb://forums/forumdisplay/(initWithForumId:)"
+                      parent: nil
+            toViewController: [ForumDisplayController class]
+                    selector: nil
+                  transition: 0];
+    
+    
     // Private Messages - View list of folders
     [map                from: @"vb://private/folders"
                       parent: nil

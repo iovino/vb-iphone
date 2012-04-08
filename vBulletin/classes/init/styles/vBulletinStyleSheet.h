@@ -431,105 +431,106 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
-#pragma mark Basic Table Cells
+#pragma mark Forum Table Cells
 
 /**
- * 
+ * The font and size of the table cells title.
  * 
  * @return UIFont
  */
 - (UIFont *)forumTableCellTitleFont;
 
 /**
- * 
+ * The text color of the table cells title.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellTitleTextColor;
 
 /**
- * 
+ * The text color of the table cells title when selected.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellTitleTextColorSelected;
 
 /**
- * 
+ * The text color of the table cells shadow title.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellTitleShadowColor;
 
 /**
- * 
+ * The text color of the table cells shadow title when selected.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellTitleShadowColorSelected;
 
 /**
- * 
+ * The shadow offset of the table cells title text.
  * 
  * @return CGSize
  */
 - (CGSize)forumTableCellTitleShadowOffset;
 
 /**
- * 
+ * The background color of the tables cells title text.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellTitleBackgroundColor;
 
 /**
- * 
+ * The font and size of the table cells description text.
  * 
  * @return UIFont
  */
 - (UIFont *)forumTableCellDetailFont;
 
 /**
- * 
+ * The background color of the tables cells description text.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellDetailBackgroundColor;
 
 /**
- * 
+ * The text color of the table cells description text.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellDetailTextColor;
 
 /**
- * 
+ * The text color of the table cells description when selected.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellDetailTextColorSelected;
 
 /**
- * 
+ * The text color of the table cells shadow description.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellDetailShadowColor;
 
 /**
- * 
+ * The text color of the table cells shadow description when selected.
  * 
  * @return UIColor
  */
 - (UIColor *)forumTableCellDetailShadowColorSelected;
 
 /**
- * 
+ * The shadow offset of the table cells description text.
  * 
  * @return CGSize
  */
 - (CGSize)forumTableCellDetailShadowOffset;
+
 
 
 - (NSInteger)forumTableGroupHeaderPadding;

@@ -603,7 +603,9 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)animationDidStop:(NSString *)animationID finished:(BOOL)finished context:(void *)context {
+- (void)animationDidStop:(NSString *)animationID 
+                finished:(BOOL)finished 
+                 context:(void *)context {
     
     self.view.userInteractionEnabled = YES;
     
