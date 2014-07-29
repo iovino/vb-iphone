@@ -5,8 +5,8 @@ My first attempt at building an iOS app.
 ## Screenshots
 
 ![](https://raw.githubusercontent.com/iovino/vb-iphone/develop/vBulletin/bundles/vBulletin.bundle/screenshots/loading.png "Loading")
-![](https://raw.githubusercontent.com/iovino/ruby-forum/master/app/assets/images/screenshots/login.png "Login")
-![](https://raw.githubusercontent.com/iovino/ruby-forum/master/app/assets/images/screenshots/launcher.png "Launcher")
-![](https://raw.githubusercontent.com/iovino/ruby-forum/master/app/assets/images/screenshots/forum-home.png "Forum Index")
-![](https://raw.githubusercontent.com/iovino/ruby-forum/master/app/assets/images/screenshots/thread-listing.png "Thread listings")
-![](https://raw.githubusercontent.com/iovino/ruby-forum/master/app/assets/images/screenshots/showthread.png "Posts Listings")
+![](https://raw.githubusercontent.com/iovino/vb-iphone/develop/vBulletin/bundles/vBulletin.bundle/screenshots/login.png "Login")
+![](https://raw.githubusercontent.com/iovino/vb-iphone/develop/vBulletin/bundles/vBulletin.bundle/screenshots/launcher.png "Launcher")
+![](https://raw.githubusercontent.com/iovino/vb-iphone/develop/vBulletin/bundles/vBulletin.bundle/screenshots/forum-home.png "Forum Index")
+![](https://raw.githubusercontent.com/iovino/vb-iphone/develop/vBulletin/bundles/vBulletin.bundle/screenshots/thread-listing.png "Thread listings")
+![](https://raw.githubusercontent.com/iovino/vb-iphone/develop/vBulletin/bundles/vBulletin.bundle/screenshots/showthread.png "Posts Listings")
